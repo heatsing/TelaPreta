@@ -1,0 +1,243 @@
+import { addedLocales } from './added-locales.mjs';
+
+export const locales = {
+  pt: {
+    lang: 'pt-BR', native: 'Português (Brasil)', base: '/', previousWhitePath: 'tela-branca',
+    nav: ['Tela preta', 'Tela branca', 'Como usar'], language: 'Idioma', mainNav: 'Navegação principal', skip: 'Pular para a ferramenta',
+    share: { title: "Compartilhar", copy: "Copiar link", native: "Mais opções", copied: "Link copiado.", manual: "Selecione e copie o link." },
+    ui: { preview: 'Prévia da tela', colors: 'Cores da tela', customColor: 'Cor personalizada', invalidHex: 'Digite uma cor HEX válida, por exemplo #336699.', resolution: 'Resolução da imagem', download: 'Baixar PNG', ready: 'PNG gerado.', failed: 'Não foi possível gerar a imagem. Tente uma resolução menor.', footerNav: 'Ferramentas e ajuda', footerLanguages: 'Idiomas', footerAbout: 'Sobre a ferramenta', faq: 'Perguntas frequentes', footer: 'Telas de cor sólida e imagens PNG no navegador.', photo: 'Monitor exibindo preto e branco lado a lado, com um pequeno ponto claro sobre o preto.', compare: 'O que observar em cada cor', related: 'Experimente outra cor de tela', format: 'Formato', dimensions: 'Dimensões', choose: 'Escolher resolução', coverage: 'A prévia cobre uma parte da tela. Para conferir outras áreas, mova a janela ou abra o PNG baixado no visualizador de imagens.' },
+    colors: ['Preto', 'Branco', 'Vermelho', 'Verde', 'Azul', 'Cinza'], sizes: ['HD', 'Full HD', 'QHD', '4K UHD', 'Celular', 'Quadrado'],
+    compare: [['Preto', 'Veja se algum ponto continua aceso. No LCD, observe também as bordas.'], ['Branco', 'Procure pontos escuros, manchas e diferenças de brilho.'], ['Vermelho, verde e azul', 'Compare um mesmo ponto nas três cores primárias.'], ['Cinza', 'Procure áreas com tons diferentes em um fundo intermediário.']],
+    black: {
+      head: 'Tela preta online',
+      meta: 'Abra um fundo preto puro no navegador, use branco e RGB para verificar o monitor e baixe uma imagem preta em PNG, de Full HD a 4K.',
+      intro: 'Exiba um fundo preto puro, teste as cores do monitor ou baixe uma imagem preta em PNG.',
+      definition: ['O que é uma tela preta online?', 'É uma ferramenta gratuita que mostra um fundo preto puro (#000000) no navegador. Você pode usá-la para ver pontos que continuam acesos no monitor, deixar a segunda tela escura por alguns instantes ou gerar um fundo preto no tamanho que precisa.'],
+      usesTitle: 'Para que serve uma tela preta?',
+      uses: [['Ver pontos brilhantes no monitor', 'Abra o preto e observe se algum ponto branco ou colorido continua visível no mesmo lugar. Depois, compare com o branco e as cores primárias.'], ['Conferir um painel OLED ou AMOLED', 'Um pixel OLED pode apagar para exibir preto puro. Isso pode reduzir o consumo do painel enquanto o fundo preto está aberto. A autonomia também depende do brilho e do que o aparelho está fazendo.'], ['Localizar poeira e marcas de dedo', 'Sob luz lateral, um fundo escuro pode realçar marcas na superfície. Na hora de limpar, siga as orientações do fabricante do seu monitor.'], ['Escurecer uma segunda tela', 'Abra o fundo preto no monitor secundário durante um filme ou uma apresentação. Para descansar os olhos, faça uma pausa olhando para longe da tela.']],
+      guide: 'Como testar o monitor com uma tela preta',
+      steps: ['Arraste a janela para o monitor que quer verificar e amplie a janela do navegador para ter uma área de teste maior.', 'No fundo preto, procure pontos claros. Se encontrar um, anote a posição e verifique se há sujeira na superfície.', 'Compare o mesmo ponto sobre branco, vermelho, verde e azul. Se ele aparecer sempre na mesma posição, consulte a política de pixels do fabricante.'],
+      png: ['Como baixar uma imagem preta em PNG', 'Selecione a resolução e clique em “Baixar PNG”. Use 1920 × 1080 para Full HD, 3840 × 2160 para 4K ou 1080 × 1920 para um fundo de celular. O arquivo é criado no navegador, com preto puro de ponta a ponta.'],
+      related: 'Compare com um fundo branco para conferir pontos escuros e áreas com brilho irregular.',
+      faq: [['Como deixar a tela preta no navegador?', 'Abra esta página e mantenha a cor Preto. Se estiver usando outro monitor, arraste a janela para ele.'], ['A tela preta é igual a desligar o monitor?', 'Com esta ferramenta, o monitor continua ligado exibindo uma cor escura. Para desligar a tela, use o botão do aparelho ou as configurações de energia.'], ['Uma tela preta ajuda a encontrar pixels queimados?', 'O fundo preto ajuda a ver pontos que continuam brilhando. Para procurar pixels que ficam sempre escuros, comece pelo fundo branco e compare com RGB.'], ['Posso baixar uma tela preta em 4K?', 'Sim. Escolha 4K UHD para salvar um PNG preto de 3840 × 2160 pixels.'], ['O fundo preto economiza bateria do celular?', 'Pode reduzir o consumo do painel em celulares OLED ou AMOLED. Em telas LCD, a iluminação de fundo costuma continuar ligada.']]
+    },
+    white: {
+      head: 'Tela branca online',
+      meta: 'Abra uma tela branca no navegador para procurar pixels escuros, usar como luz de apoio ou baixar um fundo branco puro em PNG, até 4K.',
+      intro: 'Abra um fundo branco puro para conferir seu monitor, iluminar um objeto de perto ou baixar um PNG.',
+      definition: ['O que é uma tela branca online?', 'É um fundo branco puro (#FFFFFF) que você abre de graça no navegador. Uma superfície clara e uniforme deixa pontos escuros e diferenças de brilho mais fáceis de notar e pode servir de luz de apoio ou de imagem para um projeto.'],
+      usesTitle: 'Para que serve uma tela branca?',
+      uses: [['Procurar pixels escuros', 'Em um fundo branco, um ponto que permanece escuro costuma se destacar. Troque para as cores primárias para verificar se ele continua no mesmo lugar.'], ['Observar manchas e uniformidade', 'Compare centro, cantos e bordas no brilho que usa normalmente. Use o cinza para conferir áreas com diferenças de tom.'], ['Iluminar um objeto de perto', 'Aproxime um tablet com fundo branco de um objeto pequeno para acrescentar luz à foto. Controle a intensidade pelo brilho do aparelho.']],
+      guide: 'Como verificar a tela com um fundo branco',
+      steps: ['Abra a prévia branca no aparelho que quer verificar e deixe o brilho na configuração do dia a dia.', 'Confira o centro e os cantos em busca de pontos pretos, manchas ou áreas mais escuras.', 'Passe para preto e RGB e observe novamente as mesmas regiões.'],
+      png: ['Como baixar um fundo branco em PNG', 'Escolha uma resolução e clique em “Baixar PNG”. Para um fundo de apresentação, use Full HD. Para um recorte quadrado, escolha 1080 × 1080. A imagem gerada usa branco puro (#FFFFFF).'],
+      related: 'Abra a tela preta para verificar se algum ponto claro ou colorido continua aceso.',
+      faq: [['Como colocar um fundo totalmente branco?', 'Selecione Branco para mostrar a mesma cor em toda a área de prévia.'], ['A tela branca funciona no celular?', 'Sim. Ela funciona no navegador do celular. Ajuste o brilho pelo próprio aparelho se for usar a tela para iluminar algo.'], ['Qual é o código de cor da imagem branca?', 'A prévia e o PNG branco usam #FFFFFF.'], ['Posso baixar uma imagem branca 4K?', 'Sim. Use a opção 4K UHD para salvar um PNG de 3840 × 2160 pixels.'], ['Por que aparece um ponto preto na tela branca?', 'Pode ser poeira, uma marca na superfície ou um pixel escuro. Veja se o ponto continua na mesma posição quando você troca de cor.']]
+    }
+  },
+  en: {
+    lang: 'en', native: 'English', base: '/en/', previousWhitePath: 'white-screen',
+    nav: ['Black Screen', 'White Screen', 'How to Use'], language: 'Language', mainNav: 'Main navigation', skip: 'Skip to tool',
+    share: { title: "Share", copy: "Copy link", native: "More options", copied: "Link copied.", manual: "Select and copy the link." },
+    ui: { preview: 'Screen preview', colors: 'Screen colors', customColor: 'Custom color', invalidHex: 'Enter a valid hex color, such as #336699.', resolution: 'Image resolution', download: 'Download PNG', ready: 'PNG generated.', failed: 'Could not generate the image. Try a smaller resolution.', footerNav: 'Tools and help', footerLanguages: 'Languages', footerAbout: 'About the tool', faq: 'Frequently asked questions', footer: 'Solid-color screens and PNG backgrounds in your browser.', photo: 'A monitor showing black and white test fields with a tiny bright dot on the black field.', compare: 'What to look for on each color', related: 'Try another screen color', format: 'Format', dimensions: 'Dimensions', choose: 'Choose a resolution', coverage: 'The test covers the preview area. Move the window or open the downloaded PNG in an image viewer to inspect other parts of the display.' },
+    colors: ['Black', 'White', 'Red', 'Green', 'Blue', 'Gray'], sizes: ['HD', 'Full HD', 'QHD', '4K UHD', 'Phone', 'Square'],
+    compare: [['Black', 'Look for tiny dots that stay lit. On an LCD, check the edges as well.'], ['White', 'Look for dark dots, patches of tint, or dimmer areas.'], ['Red, green, and blue', 'See whether a spot changes as you switch between the primary colors.'], ['Gray', 'Compare the brightness and tint from one area of the display to another.']],
+    black: {
+      head: 'Black Screen Online',
+      meta: 'Open a pure black screen in your browser, check your monitor with white and RGB test colors, or download a black background PNG up to 4K.',
+      intro: 'Open a pure black screen, check your monitor with solid colors, or download a black background as a PNG.',
+      definition: ['What Is a Black Screen Website?', 'A black screen website is a free browser tool that displays a solid black field. A plain #000000 background makes it easier to spot bright pixels, see smudges under room light, or keep a second display dark for a moment. You can also save the same color as a PNG.'],
+      usesTitle: 'What Can You Use a Black Screen For?',
+      uses: [['Check a monitor for bright pixels', 'Start with black and scan for a point that stays lit. Switch to white or red, green, and blue to compare the same spot. Dark pixels usually stand out better on white.'], ['See how an OLED display handles black', 'OLED pixels can switch off to show pure black, which can reduce the power the display uses. Battery life still depends on brightness, the device, and the apps that are running.'], ['Spot dust before cleaning', 'Tilt a desk lamp or use light from a window to see where dust and fingerprints catch the light. Follow your monitor manufacturer’s instructions when you clean it.'], ['Dim a spare display', 'Put the black preview on a secondary monitor while you watch a movie or share your main screen. If your eyes need a break, look away from the display for a while.']],
+      guide: 'How to Check a Monitor With a Black Screen',
+      steps: ['Move this browser window to the display you want to inspect. Maximize the browser window if you need a larger preview area.', 'Check the black field for a bright or colored dot. Look across the center and around the corners.', 'Compare the same spot on white and on the red, green, and blue backgrounds. If a mark stays in the same place, check the panel surface and the maker’s pixel policy.'],
+      png: ['How to Download a Black Background PNG', 'Choose an image size and select Download PNG. Pick 1920 × 1080 for a standard desktop background, 3840 × 2160 for 4K, or the portrait preset for a phone. The file is generated in your browser with a solid #000000 fill.'],
+      related: 'Switch to a white screen to look for dark pixels or uneven brightness.',
+      faq: [['How do I open a black screen in my browser?', 'Open this page and select Black. You can move the browser window to whichever display you want to check.'], ['Does the black screen power off my monitor?', 'The display remains on and draws the black preview. Use your device’s power controls if you want to turn the display off.'], ['Can a black screen find dead pixels?', 'Black helps reveal dots that stay lit. Try white for a dark pixel and the RGB colors to see how that spot reacts.'], ['Is a 4K black image available?', 'Yes. Choose 4K UHD for a 3840 × 2160 black PNG.'], ['Can a black screen save battery?', 'Pure black can reduce OLED display power. The effect on total battery use varies, and LCD panels generally keep their backlight on.']]
+    },
+    white: {
+      head: 'White Screen Online',
+      meta: 'Show a white screen to spot dark pixels and display tint, add close-up fill light, or download a plain 4K white background PNG.',
+      intro: 'Use a pure white screen to check a display, add a little light, or download a plain white background.',
+      definition: ['What Is a White Screen Website?', 'A white screen website is a free browser tool that displays a blank white field. The even #FFFFFF background can make dark pixels easier to spot and also works as a simple backdrop for photos, slides, and design work.'],
+      usesTitle: 'What Can You Use a White Screen For?',
+      uses: [['Check for dark pixels and tint', 'Look at the edges and center for fixed dark dots or areas that seem warmer, cooler, or dimmer than the rest of the screen.'], ['Make a small fill light', 'Set a tablet showing white beside a small object you’re photographing. Move the tablet closer or adjust its brightness to change the amount of light.'], ['Create a plain design background', 'Download a clean white PNG at the size you need for a slide, a design mockup, or a phone background.']],
+      guide: 'How to Check a Monitor With a White Screen',
+      steps: ['Open the white preview on the display you want to check and use your usual brightness setting.', 'Scan the center and corners for dark dots, uneven shading, or tint. Check the screen surface if a mark might be dust.', 'Compare the same area on black and the primary colors.'],
+      png: ['How to Download a Plain White PNG', 'Select the closest size for your project and choose Download PNG. Full HD works for standard slides, the square preset works for square layouts, and 4K UHD gives you 3840 × 2160 pixels of pure #FFFFFF.'],
+      related: 'Use a black screen to check for pixels that stay bright against a dark background.',
+      faq: [['How do I open a blank white screen?', 'Select White in the color controls. The preview area will show a uniform white field.'], ['Is the exported white really #FFFFFF?', 'Yes. The PNG uses #FFFFFF at every pixel, at the dimensions you select.'], ['Can I use a white screen as a light source?', 'A tablet or monitor can add some fill light at close range. You can regulate it with your normal brightness controls.'], ['What should I use to check for a dark pixel?', 'Start with white. Then check whether the same dot stays dark on red, green, and blue.'], ['Can I save a white background for a phone?', 'Yes. The Phone preset exports a portrait PNG at 1080 × 1920.']]
+    }
+  },
+  id: {
+    lang: 'id', native: 'Bahasa Indonesia', base: '/id/', previousWhitePath: 'layar-putih',
+    nav: ['Layar hitam', 'Layar putih', 'Cara pakai'], language: 'Bahasa', mainNav: 'Navigasi utama', skip: 'Langsung ke alat',
+    share: { title: "Bagikan", copy: "Salin tautan", native: "Opsi lain", copied: "Tautan disalin.", manual: "Pilih dan salin tautan." },
+    ui: { preview: 'Pratinjau layar', colors: 'Warna layar', customColor: 'Warna pilihan', invalidHex: 'Masukkan kode HEX yang valid, misalnya #336699.', resolution: 'Resolusi gambar', download: 'Unduh PNG', ready: 'PNG sudah dibuat.', failed: 'Gambar tidak dapat dibuat. Coba resolusi lebih kecil.', footerNav: 'Alat dan bantuan', footerLanguages: 'Pilihan bahasa', footerAbout: 'Tentang alat ini', faq: 'Pertanyaan umum', footer: 'Tampilkan warna polos dan buat gambar PNG langsung di browser.', photo: 'Bagian hitam dan putih pada satu monitor. Ada satu titik terang di bagian hitam.', compare: 'Yang perlu diperhatikan pada tiap warna', related: 'Coba warna layar lain', format: 'Format', dimensions: 'Ukuran gambar', choose: 'Pilih resolusi', coverage: 'Warna uji muncul di area pratinjau. Untuk cek bagian layar lain, geser jendela atau buka PNG yang sudah diunduh di aplikasi penampil gambar.' },
+    colors: ['Hitam', 'Putih', 'Merah', 'Hijau', 'Biru', 'Abu-abu'], sizes: ['HD', 'Full HD', 'QHD', '4K UHD', 'HP', 'Persegi'],
+    compare: [['Hitam', 'Cek apakah ada titik yang terus menyala di tempat yang sama.'], ['Putih', 'Lihat titik gelap, bercak warna, dan bagian yang kurang terang.'], ['Merah, hijau, dan biru', 'Amati titik yang sama saat tiga warna dasar ditampilkan bergantian.'], ['Abu-abu', 'Bandingkan warna dan kecerahan di bagian tengah dan tepi layar.']],
+    black: {
+      head: 'Layar Hitam Online',
+      meta: 'Buka layar hitam polos di laptop atau HP, tes layar monitor dengan warna solid, dan unduh gambar hitam PNG hingga 4K.',
+      intro: 'Tampilkan layar hitam polos untuk cek monitor, ganti warna uji, atau unduh gambar hitam dalam format PNG.',
+      definition: ['Apa itu layar hitam online?', 'Ini alat gratis untuk menampilkan warna hitam polos (#000000) langsung di browser. Pakai latar gelap ini untuk cek titik yang terus menyala, menggelapkan monitor kedua, atau membuat wallpaper hitam sendiri.'],
+      usesTitle: 'Kapan layar hitam berguna?',
+      uses: [['Cek titik terang di layar laptop', 'Lihat bagian tengah sampai pojok. Jika ada titik bercahaya, ganti latar ke putih dan RGB untuk tes dead pixel lebih lanjut.'], ['Cek warna hitam pada OLED', 'Piksel OLED bisa padam saat menampilkan warna hitam, sehingga daya panel bisa turun. Dampaknya pada baterai HP juga dipengaruhi kecerahan dan aplikasi yang aktif.'], ['Lihat debu sebelum membersihkan layar', 'Cahaya dari samping membantu memperjelas sidik jari di depan latar gelap. Ikuti petunjuk pembersihan dari produsen layar.'], ['Redupkan tampilan monitor kedua', 'Tampilkan warna hitam pada monitor samping saat menonton atau presentasi. Jika ingin mengistirahatkan mata, alihkan pandangan sejenak dari layar.']],
+      guide: 'Cara cek layar laptop dengan latar hitam',
+      steps: ['Buka halaman ini di perangkat yang mau dicek. Kalau memakai dua monitor, pindahkan jendela browser ke layar yang dituju.', 'Cari bintik putih atau berwarna yang tetap menyala di latar hitam.', 'Beralih ke putih, merah, hijau, dan biru. Perhatikan apakah bintik selalu terlihat di tempat yang sama.'],
+      png: ['Cara unduh gambar hitam polos', 'Pilih ukuran dan tekan “Unduh PNG”. Gunakan Full HD untuk monitor 1080p, 4K UHD untuk gambar 3840 × 2160, atau ukuran vertikal untuk wallpaper HP.'],
+      related: 'Buka layar putih untuk mencari titik gelap dan memeriksa apakah warna terlihat merata.',
+      faq: [['Bagaimana cara menampilkan layar hitam?', 'Pilih Hitam di pilihan warna. Latar hitam akan muncul di area pratinjau.'], ['Apakah layar hitam berarti monitor mati?', 'Monitor tetap menyala dan menampilkan warna hitam. Gunakan kontrol daya perangkat jika ingin mematikan layar.'], ['Bisa dipakai untuk tes dead pixel?', 'Hitam membantu menemukan titik terang yang tidak padam. Untuk titik yang selalu gelap, mulai dari warna putih.'], ['Bisa unduh latar hitam 4K?', 'Bisa. Pilih 4K UHD untuk membuat PNG hitam 3840 × 2160.'], ['Apakah layar hitam menghemat baterai?', 'Pada OLED atau AMOLED, piksel hitam bisa memakai lebih sedikit daya. Pada LCD, lampu latar umumnya masih menyala.']]
+    },
+    white: {
+      head: 'Layar Putih Online',
+      meta: 'Pakai layar putih online untuk tes titik mati dan bercak pada monitor atau HP. Simpan background putih polos dalam format PNG hingga 4K.',
+      intro: 'Tampilkan layar putih polos untuk cek monitor atau buat background putih dalam format PNG.',
+      definition: ['Apa itu layar putih online?', 'Alat layar putih online menampilkan warna putih murni (#FFFFFF) langsung di browser. Alat ini gratis dipakai. Latar yang rata memudahkan pengecekan titik gelap dan bisa dipakai sebagai cahaya tambahan saat memotret benda kecil.'],
+      usesTitle: 'Kegunaan layar putih',
+      uses: [['Cek titik mati di layar HP', 'Titik yang gelap terus akan lebih mudah terlihat saat tampilan berwarna putih. Lihat juga apakah ada debu di permukaan.'], ['Lihat bagian monitor yang kurang terang', 'Perhatikan warna putih dari tengah sampai tepi layar. Ganti ke abu-abu untuk melihat apakah perbedaannya masih terlihat.'], ['Tambahkan cahaya saat foto produk kecil', 'Posisikan layar tablet di dekat benda yang akan difoto. Sesuaikan terang layar sesuai kebutuhan.']],
+      guide: 'Cara cek titik gelap dengan layar putih',
+      steps: ['Buka pratinjau putih di monitor atau HP dengan kecerahan yang biasa dipakai.', 'Lihat bagian tengah, sudut, dan tepi secara bergantian. Catat letak titik atau bercak yang tampak jelas.', 'Ganti ke merah, hijau, atau biru untuk melihat apakah titik gelap bertahan.'],
+      png: ['Unduh background putih polos dalam format PNG', 'Pilih Full HD untuk slide atau 1080 × 1080 untuk desain persegi. Tekan “Unduh PNG” untuk menyimpan gambar di browser. Semua piksel berwarna #FFFFFF.'],
+      related: 'Beralih ke layar hitam untuk cek apakah ada titik terang yang terus menyala.',
+      faq: [['Bagaimana cara menampilkan layar putih di HP?', 'Buka halaman di browser HP dan pilih Putih. Warna akan terlihat di area pratinjau.'], ['Apa kode warna putih yang dipakai?', 'Pratinjau dan gambar PNG memakai putih murni #FFFFFF.'], ['Bisa pakai warna putih untuk cek titik mati?', 'Bisa. Cari titik gelap, lalu cek lagi pada beberapa warna untuk melihat apakah posisinya tetap.'], ['Apakah bisa menyimpan gambar putih ukuran HP?', 'Bisa. Pilih ukuran HP untuk membuat PNG vertikal 1080 × 1920.'], ['Apakah layar putih bisa membantu menerangi foto?', 'Bisa sebagai cahaya tambahan pada jarak dekat. Atur kecerahan dari perangkat.']]
+    }
+  },
+  es: {
+    lang: 'es', native: 'Español', base: '/es/', previousWhitePath: 'pantalla-blanca',
+    nav: ['Pantalla negra', 'Pantalla blanca', 'Cómo usarla'], language: 'Idioma', mainNav: 'Menú principal', skip: 'Ir a la herramienta',
+    share: { title: "Compartir", copy: "Copiar enlace", native: "Más opciones", copied: "Enlace copiado.", manual: "Selecciona y copia el enlace." },
+    ui: { preview: 'Vista previa', colors: 'Colores de pantalla', customColor: 'Color personalizado', invalidHex: 'Introduce un color HEX válido, como #336699.', resolution: 'Resolución de la imagen', download: 'Descargar PNG', ready: 'PNG generado.', failed: 'No se pudo crear la imagen. Prueba con una resolución menor.', footerNav: 'Herramientas y ayuda', footerLanguages: 'Idiomas', footerAbout: 'Acerca de la herramienta', faq: 'Preguntas frecuentes', footer: 'Pantallas de color sólido e imágenes PNG desde el navegador.', photo: 'Un monitor muestra negro y blanco lado a lado, con un punto luminoso en la mitad negra.', compare: 'Qué revisar con cada color', related: 'Prueba otro color de pantalla', format: 'Formato', dimensions: 'Dimensiones', choose: 'Elegir resolución', coverage: 'La prueba cubre la zona de vista previa. Para comprobar otras partes del monitor, mueve la ventana o abre el PNG en tu visor de imágenes.' },
+    colors: ['Negro', 'Blanco', 'Rojo', 'Verde', 'Azul', 'Gris'], sizes: ['HD', 'Full HD', 'QHD', '4K UHD', 'Móvil', 'Cuadrado'],
+    compare: [['Negro', 'Busca puntos que se queden encendidos y revisa las esquinas del panel.'], ['Blanco', 'Observa puntos oscuros, manchas o cambios de brillo.'], ['Rojo, verde y azul', 'Alterna los colores primarios para comprobar el mismo punto.'], ['Gris', 'Compara el tono entre distintas zonas del monitor.']],
+    black: {
+      head: 'Pantalla negra online',
+      meta: 'Abre una pantalla negra en el navegador, revisa píxeles del monitor y descarga un fondo negro PNG en Full HD, 4K o formato para móvil.',
+      intro: 'Muestra un fondo negro puro, revisa los colores de tu monitor o descarga una imagen negra en PNG.',
+      definition: ['¿Qué es una pantalla negra online?', 'Es una herramienta gratuita que muestra un fondo negro puro (#000000) en el navegador. Puedes usarla para ver puntos luminosos, oscurecer una segunda pantalla o generar una imagen negra para tu móvil.'],
+      usesTitle: 'Para qué sirve una pantalla negra',
+      uses: [['Comprobar los píxeles del monitor', 'Empieza por el negro para ver si hay algún punto que se queda encendido. Cambia a blanco para revisar los píxeles que siempre se ven oscuros.'], ['Comprobar el negro de un panel OLED', 'Los píxeles OLED pueden apagarse para mostrar el negro. Esto puede reducir el consumo del panel. La autonomía depende también del brillo, el modelo y las aplicaciones que estén en marcha.'], ['Ver el polvo antes de limpiar', 'Con la luz de una ventana de lado, un fondo oscuro puede resaltar el polvo y las huellas. Consulta cómo limpiar el monitor en las instrucciones de la marca.'], ['Atenuar un segundo monitor', 'Deja un fondo negro en la pantalla auxiliar durante una presentación. Para descansar la vista, haz una pausa lejos del monitor.']],
+      guide: 'Cómo comprobar un monitor con una pantalla negra',
+      steps: ['Arrastra la ventana al monitor que quieras revisar y amplíala si necesitas más espacio.', 'Mira si se queda encendido algún punto blanco o de color. Comprueba si hay polvo en esa zona.', 'Pasa a blanco, rojo, verde y azul para ver cómo se comporta el mismo punto.'],
+      png: ['Cómo descargar un fondo negro en PNG', 'Elige la resolución y pulsa “Descargar PNG”. Usa Full HD para escritorio, 4K UHD para un fondo negro de 3840 × 2160 o el tamaño vertical para móvil. El navegador genera la imagen al momento.'],
+      related: 'Con un fondo blanco puedes revisar si algún punto se queda oscuro.',
+      faq: [['¿Cómo pongo una pantalla negra en el navegador?', 'Abre la herramienta y selecciona Negro. La vista previa se pondrá negra.'], ['¿La pantalla negra apaga el monitor?', 'El monitor sigue encendido y muestra el color negro. Usa el botón o los controles de energía del dispositivo para apagarlo.'], ['¿Sirve para una prueba de píxeles muertos?', 'Puedes detectar puntos que se quedan encendidos sobre negro. Para encontrar un píxel oscuro, comprueba la pantalla con blanco y RGB.'], ['¿Puedo descargar una imagen negra en 4K?', 'Sí. 4K UHD genera un PNG de 3840 × 2160 píxeles.'], ['¿El fondo negro ahorra batería?', 'Puede reducir el consumo de una pantalla OLED o AMOLED. La luz de fondo de un LCD suele seguir encendida.']]
+    },
+    white: {
+      head: 'Pantalla blanca online',
+      meta: 'Muestra una pantalla blanca para revisar píxeles oscuros y manchas o descarga un fondo blanco puro en PNG de hasta 4K.',
+      intro: 'Abre un fondo blanco liso para comprobar tu monitor, aportar un poco de luz o crear una imagen blanca en PNG.',
+      definition: ['¿Qué es una pantalla blanca online?', 'Es una herramienta gratuita para mostrar blanco puro (#FFFFFF) en el navegador. El fondo uniforme facilita ver si hay puntos oscuros, zonas con otro tono o diferencias de brillo en el monitor.'],
+      usesTitle: 'Para qué sirve una pantalla blanca',
+      uses: [['Buscar píxeles oscuros', 'Fíjate en puntos fijos que se vean negros sobre blanco. Pasa a otro color para distinguirlos de una mota o una marca.'], ['Revisar el tono del monitor', 'Compara el centro con las esquinas al nivel de brillo que usas a diario. El gris también sirve para ver diferencias entre zonas.'], ['Iluminar una foto de cerca', 'Coloca una tableta con la pantalla blanca junto a un objeto pequeño y ajusta el brillo hasta conseguir la luz que necesitas.']],
+      guide: 'Cómo buscar puntos oscuros con una pantalla blanca',
+      steps: ['Abre la prueba en el móvil o monitor que quieras revisar y ajusta el brillo a tu nivel habitual.', 'Comprueba el centro, las esquinas y los bordes. Anota dónde ves puntos negros o diferencias de tono.', 'Mira los mismos puntos con los fondos rojo, verde y azul.'],
+      png: ['Cómo descargar una imagen blanca en PNG', 'Elige Full HD para una diapositiva, 1080 × 1080 para un diseño cuadrado o 4K UHD para 3840 × 2160. Pulsa “Descargar PNG” y guarda el blanco puro que ves en la herramienta.'],
+      related: 'Abre la pantalla negra para comprobar los puntos que permanecen encendidos.',
+      faq: [['¿Cómo se pone la pantalla en blanco?', 'Selecciona Blanco en la herramienta para mostrar el color en la vista previa.'], ['¿La imagen descargada es blanca pura?', 'Sí. El PNG usa #FFFFFF y se guarda con las dimensiones que selecciones.'], ['¿La pantalla blanca funciona en el móvil?', 'Sí. Puedes abrirla en el navegador y cambiar el brillo desde los controles del móvil.'], ['¿Se puede usar como luz para una foto?', 'Sí, como luz auxiliar para objetos cercanos. La pantalla aporta más luz a medida que la acercas al objeto.'], ['¿Puedo bajar un fondo blanco para el móvil?', 'Sí. El formato Móvil crea una imagen vertical de 1080 × 1920.']]
+    }
+  },
+  zh: {
+    lang: 'zh-Hans', native: '简体中文', base: '/zh/', previousWhitePath: 'white-screen',
+    nav: ['黑屏', '白屏', '使用方法'], language: '语言', mainNav: '主导航', skip: '跳转到工具',
+    share: { title: "分享", copy: "复制链接", native: "更多方式", copied: "链接已复制。", manual: "请选择并复制链接。" },
+    ui: { preview: '屏幕预览', colors: '屏幕颜色', customColor: '自定义颜色', invalidHex: '请输入有效的 HEX 色值，例如 #336699。', resolution: '图片分辨率', download: '下载 PNG', ready: 'PNG 已生成。', failed: '图片生成失败，请试试较低的分辨率。', footerNav: '工具与帮助', footerLanguages: '网站语言', footerAbout: '关于工具', faq: '常见问题', footer: '在线显示纯色画面，在浏览器内生成 PNG 图片。', photo: '显示器同时展示黑色和白色，黑色区域里有一个小亮点。', compare: '不同底色可以看什么', related: '切换到另一种颜色', format: '预设', dimensions: '图片尺寸', choose: '选择分辨率', coverage: '纯色检测只覆盖预览区域。要查看屏幕其他位置，可以移动浏览器窗口，或用设备的图片查看器打开下载的 PNG。' },
+    colors: ['黑色', '白色', '红色', '绿色', '蓝色', '灰色'], sizes: ['HD', '全高清', 'QHD', '4K UHD', '手机竖屏', '正方形'],
+    compare: [['黑色', '观察有没有一直亮着的小点，顺便看看 LCD 面板边缘的亮度。'], ['白色', '查看固定暗点、色斑和亮度不均。'], ['红、绿、蓝', '轮流比较同一个点在三种原色下的表现。'], ['灰色', '查看屏幕中央和边缘的明暗或颜色是否均匀。']],
+    black: {
+      head: '在线黑屏',
+      meta: '在浏览器显示纯黑画面，用黑白和红绿蓝检测显示器亮点、暗点，也可下载 1080p、4K 或手机尺寸的纯黑 PNG。',
+      intro: '打开纯黑画面，切换纯色检查显示器，或下载一张纯黑 PNG 图片。',
+      definition: ['什么是在线黑屏工具？', '在线黑屏是一款免费的网页工具，可以显示一块色值为 #000000 的纯黑画面。你可以用它看看显示器有没有固定亮点、暂时让副屏暗下来，或直接生成纯黑背景图。'],
+      usesTitle: '黑屏可以用来做什么？',
+      uses: [['检查显示器亮点', '新显示器到手后，可以先用纯黑画面找常亮点。发现一处亮点后，再用白色和红、绿、蓝复查同一位置。'], ['观察 OLED 的黑色表现', 'OLED 像素显示纯黑时可以熄灭，面板耗电可能降低。手机实际续航还受亮度、运行中的应用和设备型号影响。'], ['找灰尘和指纹', '让窗边的光斜着照向显示器，指纹和灰尘在黑底上更容易显出来。清洁时按设备厂家的说明操作。'], ['让副屏暗下来', '看片或投屏时，可以把黑色预览放到暂时不用的显示器上。如果眼睛累了，可以停下来看看远处。']],
+      guide: '怎么用纯黑画面检查显示器坏点',
+      steps: ['把网页移到要检查的显示器。需要更大的预览区域时，可以最大化浏览器窗口。', '先看黑色画面的中间和边缘，记下固定发亮的点。', '切换到白色和红、绿、蓝复查。如果位置固定，也检查一下屏幕表面有没有灰尘。'],
+      png: ['怎么下载纯黑背景图？', '选好分辨率后，点击「下载 PNG」。桌面常用 1920 × 1080，4K 对应 3840 × 2160，手机可选 1080 × 1920 竖图。浏览器会生成整张纯黑图片。'],
+      related: '想看暗点或色斑，可以切换到纯白画面。',
+      faq: [['怎么在网页上显示纯黑？', '打开本页，选中「黑色」即可。如果要检查副屏，可以把浏览器窗口移过去。'], ['打开黑屏后显示器还在工作吗？', '显示器仍然开着，正在显示黑色。需要关闭屏幕时，可以使用显示器的电源键或设备的电源设置。'], ['纯黑画面能用来检测坏点吗？', '黑底适合找发亮的点。要看一直发黑的像素，可以改用白底，再切换红、绿、蓝确认。'], ['能下载 4K 纯黑图片吗？', '可以。选择 4K UHD 后可下载 3840 × 2160 的纯黑 PNG。'], ['在手机上显示纯黑画面能省电吗？', 'OLED 或 AMOLED 屏幕的纯黑区域可能降低面板耗电。LCD 通常仍会保持背光。']]
+    },
+    white: {
+      head: '在线白屏',
+      meta: '打开纯白画面检查显示器暗点和色斑，或下载适合电脑、手机和设计排版的纯白背景 PNG，最高支持 4K。',
+      intro: '显示纯白画面检查屏幕暗点，也可以用来补光或下载纯白背景图。',
+      definition: ['什么是在线白屏工具？', '这款免费工具可以在网页里显示色值为 #FFFFFF 的纯白画面。白色上容易看出暗点和色差，也可以用作小物件拍摄时的补光。'],
+      usesTitle: '白屏可以用来做什么？',
+      uses: [['检查屏幕暗点', '白底能把固定发黑的小点衬出来。换用不同颜色，可以验证小点是否一直出现在同一位置。'], ['观察屏幕亮度和色差', '在常用亮度下看中央、四角和边缘，留意是否有明显偏色、色斑或较暗区域。'], ['给小物件补光', '把显示白色的平板放到饰品或其他小物件旁边，用设备的亮度控制调节补光强度。']],
+      guide: '怎么用纯白画面检测屏幕暗点',
+      steps: ['在要检查的设备上打开白色预览，把亮度调到平时用的档位。', '依次看屏幕中央、四角和边缘，记下颜色或亮度不同的位置。', '换到黑色和红、绿、蓝复查。同一个小黑点也可能来自屏幕表面的灰尘。'],
+      png: ['怎么下载纯白背景图？', '根据用途选择 PNG 尺寸。做幻灯片可选全高清，做正方形配图可选 1080 × 1080。想保存大图，可以选 3840 × 2160 的 4K UHD。'],
+      related: '用纯黑画面复查那些一直亮着的点。',
+      faq: [['手机怎么打开白屏？', '用手机浏览器打开本页，选择「白色」。用作补光时，可以直接在手机上调亮度。'], ['纯白 PNG 的颜色是多少？', '下载图的色值是 #FFFFFF，宽高以选中的分辨率为准。'], ['能生成手机用的白色竖图吗？', '可以。选「手机竖屏」即可下载 1080 × 1920 的 PNG。'], ['白屏能检查显示器暗点吗？', '可以作为肉眼检查用的底色。切换几种颜色后，可以比较暗点是否一直在原处。'], ['为什么白屏上看到一个黑点？', '可能是屏幕表面的灰尘，也可能是暗点。先查看表面，再换成其他底色对照。']]
+    }
+  },
+  ja: {
+    lang: 'ja', native: '日本語', base: '/ja/', previousWhitePath: 'white-screen',
+    nav: ['黒画面', '白画面', '使い方'], language: '言語', mainNav: 'メインメニュー', skip: 'ツールに移動',
+    share: { title: "共有", copy: "リンクをコピー", native: "その他の共有方法", copied: "リンクをコピーしました。", manual: "リンクを選択してコピーしてください。" },
+    ui: { preview: '画面プレビュー', colors: '画面の色', customColor: '色を指定', invalidHex: '有効なカラーコードを入力してください。例：#336699', resolution: '画像の解像度', download: 'PNGをダウンロード', ready: 'PNG画像を作成しました。', failed: '画像を作成できませんでした。解像度を下げてお試しください。', footerNav: 'ツールとヘルプ', footerLanguages: '対応言語', footerAbout: 'ツールについて', faq: 'よくある質問', footer: 'ブラウザーで単色表示とPNG画像の作成ができます。', photo: 'モニターに黒と白を並べて表示。黒い部分に小さな輝点が見える。', compare: '色ごとのチェックポイント', related: '別の画面色を試す', format: '種類', dimensions: '画像サイズ', choose: '解像度を選ぶ', coverage: '確認できる範囲はプレビュー領域です。画面の別の場所を見るには、ウィンドウを動かすか、保存したPNGを画像ビューアーで開いてください。' },
+    colors: ['黒', '白', '赤', '緑', '青', 'グレー'], sizes: ['HD', 'フルHD', 'QHD', '4K UHD', 'スマホ縦長', '正方形'],
+    compare: [['黒', '点灯したままの輝点や、液晶画面の端の明るさを見ます。'], ['白', '黒点、色ムラ、明るさが異なる部分を探します。'], ['赤・緑・青', '三原色を切り替えながら、同じ位置の見え方を比べます。'], ['グレー', '中央と周辺で、色や明るさに差がないか確認します。']],
+    black: {
+      head: '黒画面を表示',
+      meta: 'ブラウザーで真っ黒な画面を表示。モニターの輝点やドット抜けをチェックし、4Kやスマホ用の黒い背景をPNGで保存できます。',
+      intro: '真っ黒な画面を表示してモニターの輝点を確認。黒一色のPNG画像も保存できます。',
+      definition: ['黒画面ツールとは？', 'ブラウザーで黒一色（#000000）を表示する無料ツールです。光ったままの点を探したり、サブモニターの表示を暗くしたり、黒い壁紙を作ったりできます。'],
+      usesTitle: '黒い画面の使い道',
+      uses: [['モニターの輝点を確認する', '黒い背景で白や色の付いた点を探します。気になる点があれば、白や赤・緑・青に変えて見比べてください。'], ['有機ELの黒を確認する', '有機ELの画素は、真っ黒を表示するときに消灯できます。パネルの消費電力が下がる場合がありますが、電池の持ちは端末や明るさ、使用中のアプリにも左右されます。'], ['掃除前にほこりや指紋を探す', '画面の横から光を当てると、黒い背景では表面のほこりや指紋が目につきやすくなります。お手入れは機器メーカーの案内に従ってください。'], ['サブモニターを暗くする', '動画や資料を見ている間、隣のモニターで黒画面を表示できます。目を休めたいときは、画面から目を離して休憩しましょう。']],
+      guide: '黒画面でモニターのドット抜けをチェックする方法',
+      steps: ['確認したいモニターにブラウザーを移動し、黒いプレビューを表示します。', '画面の中央から四隅まで、光ったままの小さな点を探します。', '白と赤・緑・青で同じ場所を確認します。表面の汚れかどうかも確かめてください。'],
+      png: ['黒い背景をPNGで保存する方法', '解像度を選び、「PNGをダウンロード」を押します。パソコンにはフルHDや4K、スマートフォンには1080 × 1920の縦長サイズを選べます。'],
+      related: '黒点や明るさのムラを探すときは、白い画面に切り替えます。',
+      faq: [['真っ黒な画面を出すには？', 'このページを開いて黒を選びます。プレビュー領域に黒一色が表示されます。'], ['黒画面を表示するとモニターの電源は切れますか？', 'モニターの電源は入ったままで、表示だけが黒になります。電源を切るときは機器側の操作を使ってください。'], ['ドット抜けチェックに使えますか？', '黒では点灯し続けている輝点が見つけやすくなります。暗い点を探す場合は、白画面やほかの単色でも確認してください。'], ['4Kの黒い画像は保存できますか？', '4K UHDを選ぶと、3840 × 2160のPNGが作成されます。'], ['黒い画面でバッテリーを節約できますか？', '有機ELでは黒い部分の消費電力が減る場合があります。一般的な液晶画面は黒を表示していてもバックライトが点灯します。']]
+    },
+    white: {
+      head: '白画面を表示',
+      meta: '真っ白な画面でモニターの黒点や色ムラを確認。フルHD、4K、スマホ用の白無地PNG画像も保存できます。',
+      intro: '真っ白な画面で黒点や色ムラを確認。白無地のPNG画像もブラウザーから保存できます。',
+      definition: ['白画面ツールとは？', 'ブラウザーで白一色（#FFFFFF）を表示する無料ツールです。暗い点や色ムラを見つけやすく、写真を撮るときの補助光や資料の背景にも使えます。'],
+      usesTitle: '白い画面の使い道',
+      uses: [['黒点やドット抜けを確認する', '白い背景では暗い点が目立ちます。赤・緑・青に切り替え、同じ位置に見えるかどうかを比べます。'], ['モニターの色ムラを調べる', '中央と四隅の白を見比べます。グレーでも表示すると、色や明るさの差を見比べやすくなります。'], ['小物の撮影を明るくする', '白を表示したタブレットを被写体の近くに置き、端末の明るさで光を調整します。']],
+      guide: '白画面で黒点や色ムラを確認する方法',
+      steps: ['確認したい画面で白いプレビューを表示し、普段の明るさに合わせます。', '中央と四隅を見比べ、暗い点やほかと色が違う場所を探します。', '赤・緑・青や黒に切り替えて、気になった箇所をもう一度確認します。'],
+      png: ['白無地の画像をPNGで保存する方法', 'プレゼン資料ならフルHD、正方形の素材なら1080 × 1080を選べます。4K UHDでは3840 × 2160の真っ白な画像を作れます。'],
+      related: '光ったままの点を探すときは、背景を黒くして見比べます。',
+      faq: [['スマートフォンでも白画面を使えますか？', 'ブラウザーでこのページを開き、白を選びます。明るさはスマートフォン本体で調整できます。'], ['白のカラーコードは何ですか？', 'プレビューとPNGの白は #FFFFFF です。'], ['白画面でどんな不具合を確認できますか？', '黒点、色ムラ、周りより暗く見える場所などを目視で確認できます。'], ['スマホ用の白い壁紙を保存できますか？', '「スマホ縦長」を選ぶと、1080 × 1920の白いPNGを作れます。'], ['白い画面を照明代わりに使えますか？', '小物を近くから撮影するときに、少し明るさを補えます。']]
+    }
+  },
+  ko: {
+    lang: 'ko', native: '한국어', base: '/ko/', previousWhitePath: 'white-screen',
+    nav: ['검은 화면', '흰 화면', '사용 방법'], language: '언어', mainNav: '주 메뉴', skip: '도구로 이동',
+    share: { title: "공유", copy: "링크 복사", native: "더 많은 옵션", copied: "링크가 복사되었습니다.", manual: "링크를 선택해 복사하세요." },
+    ui: { preview: '화면 미리보기', colors: '화면 색상', customColor: '사용자 지정 색상', invalidHex: '올바른 HEX 색상 코드를 입력하세요. 예: #336699', resolution: '이미지 해상도', download: 'PNG 다운로드', ready: 'PNG를 만들었습니다.', failed: '이미지를 만들지 못했습니다. 더 낮은 해상도로 시도해 주세요.', footerNav: '도구 및 도움말', footerLanguages: '지원 언어', footerAbout: '도구 소개', faq: '자주 묻는 질문', footer: '브라우저에서 단색 화면을 띄우고 PNG 배경을 만드세요.', photo: '검정과 흰색이 나란히 표시된 모니터. 검정 부분에 작은 밝은 점이 있습니다.', compare: '색상별로 확인할 부분', related: '다른 화면 색상 열기', format: '형식', dimensions: '이미지 크기', choose: '해상도 선택', coverage: '미리보기가 표시되는 부분을 검사할 수 있습니다. 화면의 다른 곳을 확인하려면 창을 옮기거나 저장한 PNG를 이미지 뷰어에서 여세요.' },
+    colors: ['검정', '흰색', '빨강', '초록', '파랑', '회색'], sizes: ['HD', 'Full HD', 'QHD', '4K UHD', '휴대폰 세로', '정사각형'],
+    compare: [['검정', '계속 켜져 있는 점과 LCD 화면 가장자리의 밝기를 살펴보세요.'], ['흰색', '어두운 점이나 색 얼룩, 밝기가 고르지 않은 곳을 찾아보세요.'], ['빨강·초록·파랑', '세 가지 색을 바꿔 가며 같은 자리에 점이 보이는지 확인하세요.'], ['회색', '화면 가운데와 모서리의 밝기와 색이 고른지 살펴보세요.']],
+    black: {
+      head: '검은 화면 띄우기',
+      meta: '브라우저에 검은 화면을 띄워 모니터의 밝은 점과 불량화소를 확인하고, 4K 또는 휴대폰용 검은 배경화면을 PNG로 저장하세요.',
+      intro: '검은 화면을 띄워 모니터의 밝은 점을 확인하거나 검은 배경을 PNG로 저장하세요.',
+      definition: ['검은 화면 도구란?', '브라우저에 검은색(#000000)을 표시하는 무료 도구입니다. 계속 빛나는 점을 확인하거나 보조 모니터를 어둡게 표시하고, 단색 배경화면을 만드는 데 쓸 수 있습니다.'],
+      usesTitle: '검은 화면은 언제 쓰나요?',
+      uses: [['모니터 불량화소 테스트', '검은 바탕에서 항상 빛나는 점을 먼저 찾으세요. 흰색과 RGB 화면을 열어 같은 위치를 확인하면 어떤 색에서 잘 보이는지 비교할 수 있습니다.'], ['OLED의 검은색 확인', 'OLED 화소는 순수한 검정을 표현할 때 꺼질 수 있어 패널 전력 사용이 줄 수 있습니다. 배터리 사용 시간은 화면 밝기와 실행 중인 앱에도 영향을 받습니다.'], ['화면 청소 전 먼지와 지문 확인', '창가 빛이 화면에 비스듬히 닿을 때 검은 바탕 위로 지문이나 먼지가 잘 드러날 수 있습니다. 청소는 제품 설명서의 안내를 따르세요.'], ['보조 모니터 어둡게 하기', '영상이나 발표 자료는 주 모니터에 두고, 옆 모니터에 검은색을 띄워 보세요. 눈이 피곤하다면 잠시 화면에서 시선을 떼고 쉬세요.']],
+      guide: '검은 화면으로 모니터의 밝은 점 확인하기',
+      steps: ['확인하려는 모니터로 브라우저 창을 옮깁니다. 필요하면 창을 최대화합니다.', '검은 화면에서 가운데와 모서리를 살피고 계속 빛나는 점이 있는지 확인합니다.', '흰색, 빨강, 초록, 파랑으로 바꿔 같은 위치를 살펴봅니다. 화면 표면의 먼지도 확인하세요.'],
+      png: ['검은 배경화면 PNG 저장 방법', '해상도를 골라 ‘PNG 다운로드’를 누르세요. 1920 × 1080은 Full HD, 3840 × 2160은 4K UHD입니다. 휴대폰에는 1080 × 1920 세로형을 고를 수 있습니다.'],
+      related: '어두운 점이나 밝기 차이를 찾으려면 흰 화면에서 같은 위치를 확인해 보세요.',
+      faq: [['브라우저에서 검은 화면을 어떻게 띄우나요?', '이 페이지에서 검정을 선택하세요. 검은색이 미리보기 영역에 표시됩니다.'], ['검은 화면을 띄우면 모니터가 꺼지나요?', '모니터는 켜진 상태로 검은색을 표시합니다. 끄려면 기기의 전원 버튼이나 전원 설정을 이용하세요.'], ['검은색으로 불량화소를 확인할 수 있나요?', '켜진 채로 남아 있는 밝은 점을 확인하는 데 쓸 수 있습니다. 어두운 점은 흰색이나 다른 단색 화면에서도 비교해 보세요.'], ['4K 검은 배경도 저장할 수 있나요?', '4K UHD를 선택하면 3840 × 2160 픽셀의 검은 PNG가 만들어집니다.'], ['검은 화면은 배터리 절약에 도움이 되나요?', 'OLED나 AMOLED에서는 검은 부분의 전력 사용이 줄 수 있습니다. LCD는 일반적으로 검은색에서도 백라이트가 켜져 있습니다.']]
+    },
+    white: {
+      head: '흰 화면 띄우기',
+      meta: '흰 화면으로 모니터의 어두운 화소와 얼룩을 확인하세요. 4K나 휴대폰용 단색 흰 배경을 PNG로 만들 수 있습니다.',
+      intro: '흰 화면에서 어두운 점과 색 얼룩을 살펴보고, 원하는 크기의 흰 배경도 PNG로 만드세요.',
+      definition: ['흰 화면 도구란?', '브라우저에서 순수한 흰색(#FFFFFF)을 보여 주는 무료 도구입니다. 균일한 바탕에 어두운 점이 두드러져 화면을 확인할 때 편리합니다. 사진에 쓸 보조광이나 배경 이미지로도 활용할 수 있습니다.'],
+      usesTitle: '흰 화면은 언제 쓰나요?',
+      uses: [['화면에 검은 점이 있는지 확인', '고정된 어두운 점을 찾은 뒤 색을 바꿔 보세요. 같은 위치에서 계속 보이는지 비교할 수 있습니다.'], ['밝기와 색 얼룩 확인', '평소에 쓰는 밝기로 맞추고 가운데와 모서리를 살펴보세요. 회색 화면에서도 색이 고르게 보이는지 확인해 보세요.'], ['작은 물건 촬영에 보조광 쓰기', '태블릿에 흰 화면을 띄워 물건 옆에 두면 가까운 곳을 조금 더 밝게 비출 수 있습니다.']],
+      guide: '흰 화면으로 어두운 화소를 확인하는 방법',
+      steps: ['검사하려는 모니터나 휴대폰에 흰 미리보기를 띄우고 평소 밝기로 맞춥니다.', '가운데와 모서리에서 검은 점이나 색이 다른 부분을 찾아봅니다.', '빨강, 초록, 파랑을 번갈아 표시해 같은 자리에 점이 계속 보이는지 확인합니다.'],
+      png: ['흰색 배경을 PNG로 저장하는 방법', '발표 자료에는 Full HD, 정사각형 이미지에는 1080 × 1080을 골라 보세요. 4K UHD를 고르면 3840 × 2160의 흰색 PNG를 저장할 수 있습니다.'],
+      related: '계속 켜져 있는 밝은 점은 검은 화면에서 확인해 보세요.',
+      faq: [['휴대폰에서 흰 화면을 어떻게 띄우나요?', '휴대폰 브라우저에서 이 페이지를 열고 흰색을 선택하세요.'], ['흰색 PNG의 색상 코드는 무엇인가요?', '미리보기와 PNG 모두 #FFFFFF입니다.'], ['흰 화면에서 어떤 부분을 확인할 수 있나요?', '고정된 어두운 점이나 색이 고르지 않은 부분이 보일 수 있습니다. 다른 단색과 비교해 확인하세요.'], ['휴대폰용 흰 배경을 저장할 수 있나요?', '‘휴대폰 세로’를 선택하면 1080 × 1920 크기로 만들어집니다.'], ['흰 화면을 조명으로 써도 되나요?', '가까운 곳을 찍을 때 보조광으로 쓸 수 있습니다. 화면 밝기와 물건과의 거리를 조절해 보세요.']]
+    }
+  },
+  ...addedLocales
+};
