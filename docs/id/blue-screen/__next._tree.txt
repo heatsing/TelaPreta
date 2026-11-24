@@ -1,7 +1,6 @@
-:HL["/TelaPreta/_next/static/chunks/2youe88a_6idd.css","style"]
-:HL["/TelaPreta/_next/static/chunks/206ud3u2j6bk2.css","style"]
+:HL["/TelaPreta/_next/static/chunks/1h73rot1-mydn.css","style"]
+:HL["/TelaPreta/_next/static/chunks/0wo3-q7ernf2j.css","style"]
 :HL["/TelaPreta/_next/static/chunks/1--kxzufaoqoe.css","style"]
-:HL["../../assets/lucide.svg","image"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":{"n":"segments","t":"oc","k":"id/blue-screen","s":[]},"h":65648,"c":"$Q2"}]]
-0:{"b":"ys1jNzcfs-HmPL2ujpI_3","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}
+0:{"b":"3Gg4psdCdGHfa-rpytcbj","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}

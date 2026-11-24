@@ -25,7 +25,7 @@ export async function generateMetadata({ params }) {
   const { color, scene, guide, monitor, locale, path, target, label } = page;
   if (target) {
     return {
-      title: `${label} | Telapreta.cc`,
+      title: `${label} | TelaPreta.cc`,
       alternates: { canonical: siteRoot + target },
       robots: { index: false, follow: true }
     };
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
 
   const detail = scene ?? guide ?? monitor;
   const copy = detail ? { head: detail.title, meta: detail.description } : copyForPage(locale, color);
-  const title = `${copy.head} | Telapreta.cc`;
+  const title = `${copy.head} | TelaPreta.cc`;
   const description = copy.meta.replace(/\p{L}/u, (letter) => letter.toLocaleUpperCase(locale.lang));
   const url = siteRoot + path;
   const translatedUrls = languageAlternates(page, siteRoot);
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }) {
     robots: previewBuild ? { index: false, follow: false } : undefined,
     openGraph: {
       type: 'website',
-      siteName: 'Telapreta.cc',
+      siteName: 'TelaPreta.cc',
       title,
       description,
       url

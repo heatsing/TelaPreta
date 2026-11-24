@@ -1,13 +1,12 @@
 import { Fragment } from 'react';
 import { colorPageLabel } from '../color-page-copy.mjs';
-import { pathFor, relativeHref, screenColors } from '../routes.mjs';
+import { pathFor, relativeHref } from '../routes.mjs';
 import { copyForPage } from '../site.mjs';
+import { DisplayPageFrame, paletteLinks } from './DisplayPageFrame';
 import { Icon } from './Icon';
-import { SceneGallery } from './SceneGallery';
 import { ScreenSettings } from './ScreenSettings';
 import { ScreenTool } from './ScreenTool';
 import { ShareSection } from './ShareSection';
-import { SiteChrome } from './SiteChrome';
 
 const resolutions = [[1280, 720], [1920, 1080], [2560, 1440], [3840, 2160], [1080, 1920], [1080, 1080]];
 
@@ -17,9 +16,26 @@ function Editorial({ locale, copy, mode, url, linkTo }) {
 
   return (
     <div className="editorial">
-      <section id="about" aria-labelledby="about-title">
-        <h2 id="about-title">{copy.definition[0]}</h2>
+      <section id="como-usar" aria-labelledby="guide-title">
+        <h2 id="guide-title">{locale.nav[2]}</h2>
+        <h3>{copy.guide}</h3>
+        <ol>{copy.steps.map((step) => <li key={step}>{step}</li>)}</ol>
+        <p className="test-coverage">{ui.coverage}</p>
+        <h3>{ui.compare}</h3>
+        <ul className="checks">
+          {locale.compare.map(([color, description]) => <li key={color}><strong>{color}</strong><span>{description}</span></li>)}
+        </ul>
+        <h3 id="about">{copy.definition[0]}</h3>
         <p>{copy.definition[1]}</p>
+        <div className="faq">
+          <h3 id="faq">{ui.faq}</h3>
+          {copy.faq.map(([question, answer]) => (
+            <details key={question}>
+              <summary>{question}<Icon name="chevron" /></summary>
+              <p>{answer}</p>
+            </details>
+          ))}
+        </div>
       </section>
       <section id="uses" aria-labelledby="uses-title">
         <h2 id="uses-title">{copy.usesTitle}</h2>
@@ -29,15 +45,6 @@ function Editorial({ locale, copy, mode, url, linkTo }) {
             <p>{description}{source && <> <a href={linkTo(source.href)}>{source.label}</a></>}</p>
           </Fragment>
         ))}
-      </section>
-      <section id="como-usar" aria-labelledby="guide-title">
-        <h2 id="guide-title">{copy.guide}</h2>
-        <ol>{copy.steps.map((step) => <li key={step}>{step}</li>)}</ol>
-        <p className="test-coverage">{ui.coverage}</p>
-        <h3>{ui.compare}</h3>
-        <ul className="checks">
-          {locale.compare.map(([color, description]) => <li key={color}><strong>{color}</strong><span>{description}</span></li>)}
-        </ul>
       </section>
       <section id="png" aria-labelledby="png-title">
         <h2 id="png-title">{copy.png[0]}</h2>
@@ -52,21 +59,12 @@ function Editorial({ locale, copy, mode, url, linkTo }) {
         </table>
         <p className="resolution-link"><a href="#resolution">{ui.choose}</a></p>
       </section>
-      <section className="faq" id="faq" aria-labelledby="faq-title">
-        <h2 id="faq-title">{ui.faq}</h2>
-        {copy.faq.map(([question, answer]) => (
-          <details key={question}>
-            <summary>{question}<Icon name="chevron" /></summary>
-            <p>{answer}</p>
-          </details>
-        ))}
-      </section>
       <section className="related" aria-labelledby="related-title">
         <h2 id="related-title">{ui.related}</h2>
         <p>{copy.related}</p>
         <a href={linkTo(pathFor(locale, related))}>{colorPageLabel(locale, related)}</a>
       </section>
-      <ShareSection copy={locale.share} url={url} title={`${copy.head} | Telapreta.cc`} />
+      <ShareSection copy={locale.share} url={url} title={`${copy.head} | TelaPreta.cc`} />
     </div>
   );
 }
@@ -74,22 +72,23 @@ function Editorial({ locale, copy, mode, url, linkTo }) {
 export function ScreenPage({ locale, color, path, siteRoot, feedbackUrl }) {
   const copy = copyForPage(locale, color);
   const linkTo = (target) => relativeHref(path, target);
-  const colors = screenColors.map(({ id, hex }, index) => ({
-    hex,
-    name: locale.colors[index],
-    href: linkTo(pathFor(locale, id))
-  }));
+  const colors = paletteLinks(locale, path);
   const sizes = resolutions.map(([width, height], index) => ({ width, height, label: locale.sizes[index] }));
 
   return (
-    <SiteChrome locale={locale} path={path} languagePath={(translated) => pathFor(translated, color.id)} skipTarget="#tool" feedbackUrl={feedbackUrl} galleryOnPage toolOnPage>
-      <header className="page-intro"><h1>{copy.head}</h1><p>{copy.intro}</p></header>
-      <ScreenSettings initialColor={color.hex}>
-        <ScreenTool ui={locale.ui} initialColor={color.hex} colors={colors} resolutions={sizes} />
-        {locale.lang === 'pt-BR' && <p className="monitor-shortcut"><a href={linkTo('/teste-de-monitor/')}>Teste de monitor</a></p>}
-        <SceneGallery locale={locale} path={path} />
+    <ScreenSettings initialColor={color.hex}>
+      <DisplayPageFrame
+        locale={locale}
+        path={path}
+        languagePath={(translated) => pathFor(translated, color.id)}
+        title={copy.head}
+        description={copy.intro}
+        tool={<ScreenTool ui={locale.ui} initialColor={color.hex} colors={colors} resolutions={sizes} />}
+        feedbackUrl={feedbackUrl}
+        toolOnPage
+      >
         <Editorial locale={locale} copy={copy} mode={color.id} url={siteRoot + path} linkTo={linkTo} />
-      </ScreenSettings>
-    </SiteChrome>
+      </DisplayPageFrame>
+    </ScreenSettings>
   );
 }

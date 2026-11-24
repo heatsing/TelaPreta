@@ -17,7 +17,7 @@ export const guidePages = [
     id: 'about',
     path: '/sobre/',
     updatedOn: '2026-11-24',
-    title: 'Sobre o Telapreta.cc',
-    description: 'Conheça o Telapreta.cc, saiba como as estatísticas de acesso funcionam e encontre o canal para relatar problemas com as ferramentas.'
+    title: 'Sobre o TelaPreta.cc',
+    description: 'Conheça o TelaPreta.cc, saiba como as estatísticas de acesso funcionam e encontre o canal para relatar problemas com as ferramentas.'
   }
 ];

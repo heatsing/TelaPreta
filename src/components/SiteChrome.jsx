@@ -22,17 +22,11 @@ const themeLabels = {
   ms: ['Rupa', 'Cerah', 'Gelap']
 };
 
-const iconCreditsLabels = {
-  'pt-BR': 'Ícones', en: 'Icons', id: 'Ikon', es: 'Iconos', 'zh-Hans': '图标',
-  ja: 'アイコン', ko: '아이콘', de: 'Symbole', fr: 'Icônes', uk: 'Іконки',
-  pl: 'Ikony', it: 'Icone', tr: 'Simgeler', sv: 'Ikoner', ms: 'Ikon'
-};
-
 function Brand({ href }) {
   return (
     <a className="brand" href={href}>
       <span className="brand-mark"><Icon name="brand" /></span>
-      Telapreta.cc
+      TelaPreta.cc
     </a>
   );
 }
@@ -96,9 +90,7 @@ function Footer({ locale, linkTo, languageHref, toolOnPage }) {
   const links = [
     [blackPath, locale.nav[0]],
     [pathFor(locale, 'white'), locale.nav[1]],
-    [`${toolPath}#about`, ui.footerAbout],
-    [`${toolPath}#como-usar`, locale.nav[2]],
-    [`${toolPath}#faq`, ui.faq]
+    [`${toolPath}#como-usar`, locale.nav[2]]
   ];
   if (locale.lang === 'pt-BR') {
     links.push(
@@ -121,13 +113,7 @@ function Footer({ locale, linkTo, languageHref, toolOnPage }) {
           <p id="footer-languages-title">{ui.footerLanguages}</p>
           <ul role="list"><LanguageLinks locale={locale} languageHref={languageHref} /></ul>
         </nav>
-        <div className="footer-meta">
-          <p className="footer-copyright">© {new Date().getUTCFullYear()} Telapreta.cc</p>
-          <p className="footer-icon-credit">
-            <span>{iconCreditsLabels[locale.lang]}</span>
-            <a href="https://lucide.dev/"><img src={linkTo('/assets/lucide.svg')} width="20" height="20" alt="" />Lucide</a>
-          </p>
-        </div>
+        <p className="footer-copyright">© {new Date().getUTCFullYear()} TelaPreta.cc</p>
       </div>
     </footer>
   );

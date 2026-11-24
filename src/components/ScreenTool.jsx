@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Icon } from './Icon';
+import { FullscreenAction, FullscreenDialog, FullscreenPreview, useFullscreen } from './Fullscreen';
+import { ScreenColors } from './ScreenColors';
 import { useScreenSettings } from './ScreenSettings';
 
 function parseHex(text, allowShort = false) {
@@ -31,9 +33,7 @@ export function ScreenTool({ ui, initialColor, colors, resolutions }) {
   const [feedback, setFeedback] = useState('');
   const [downloading, setDownloading] = useState(false);
   const hexInput = useRef(null);
-  const fullscreenDialog = useRef(null);
-  const fullscreenField = useRef(null);
-  const fullscreenOpener = useRef(null);
+  const fullscreen = useFullscreen();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -45,16 +45,6 @@ export function ScreenTool({ ui, initialColor, colors, resolutions }) {
     }
     if (resolutions.some(({ width, height }) => `${width}x${height}` === size)) setResolution(size);
   }, [resolutions, setColor, setResolution]);
-
-  useEffect(() => {
-    const dialog = fullscreenDialog.current;
-    const field = fullscreenField.current;
-    function closeAfterNativeFullscreen() {
-      if (document.fullscreenElement !== field && dialog.open) dialog.close();
-    }
-    field.addEventListener('fullscreenchange', closeAfterNativeFullscreen);
-    return () => field.removeEventListener('fullscreenchange', closeAfterNativeFullscreen);
-  }, []);
 
   function updatePreview(nextColor, nextText = nextColor) {
     setColor(nextColor);
@@ -96,32 +86,12 @@ export function ScreenTool({ ui, initialColor, colors, resolutions }) {
     updatePreview(initialColor);
   }
 
-  async function openFullscreen(event) {
+  function openFullscreen(event) {
     if (!commitHex()) {
       hexInput.current.focus();
       return;
     }
-    const dialog = fullscreenDialog.current;
-    const field = fullscreenField.current;
-    if (dialog.open) return;
-
-    fullscreenOpener.current = event.currentTarget;
-    dialog.showModal();
-    if (!document.fullscreenEnabled) return;
-
-    try {
-      await field.requestFullscreen({ navigationUI: 'hide' });
-      if (!dialog.open && document.fullscreenElement === field) await document.exitFullscreen();
-    } catch {
-      // The dialog covers the viewport if native fullscreen is unavailable.
-    }
-  }
-
-  async function restoreAfterFullscreen() {
-    if (document.fullscreenElement === fullscreenField.current) {
-      await document.exitFullscreen().catch(() => {});
-    }
-    if (!fullscreenDialog.current?.open) fullscreenOpener.current?.focus({ preventScroll: true });
+    return fullscreen.open(event);
   }
 
   async function downloadPng() {
@@ -165,29 +135,8 @@ export function ScreenTool({ ui, initialColor, colors, resolutions }) {
           <h2 id="stage-title">{ui.preview}</h2>
           <span className="hex" id="hex" aria-live="polite">{color}</span>
         </div>
-        <button className="preview" type="button" data-fullscreen="" aria-haspopup="dialog" aria-label={ui.fullscreen} title={ui.fullscreen} onClick={openFullscreen}>
-          <span className="preview-fullscreen" aria-hidden="true">
-            <Icon name="fullscreen" />
-          </span>
-        </button>
-        <h3 id="color-label">{ui.colors}</h3>
-        <div className="color-list" role="group" aria-labelledby="color-label">
-          {colors.map(({ hex, name, href }) => (
-            <a
-              key={hex}
-              className="swatch"
-              data-color={hex}
-              data-selected={hex === color ? '' : undefined}
-              aria-current={hex === initialColor ? 'page' : undefined}
-              style={{ '--swatch': hex }}
-              href={href}
-              onClick={hex === initialColor ? resetCurrentColor : undefined}
-            >
-              <span className="color-chip" aria-hidden="true" />
-              <span>{name}</span>
-            </a>
-          ))}
-        </div>
+        <FullscreenPreview label={ui.fullscreen} onOpen={openFullscreen} />
+        <ScreenColors label={ui.colors} colors={colors} currentColor={initialColor} selectedColor={color} onSelectCurrent={resetCurrentColor} />
       </div>
       <div className="tool-options">
         <div className="custom-options">
@@ -225,16 +174,12 @@ export function ScreenTool({ ui, initialColor, colors, resolutions }) {
               <Icon name="chevron" />
             </div>
             <button className="download" id="download" type="button" disabled={downloading} onClick={downloadPng}><Icon name="download" />{ui.download}</button>
-            <button className="fullscreen-action" type="button" data-fullscreen="" aria-haspopup="dialog" onClick={openFullscreen}><Icon name="fullscreen" />{ui.fullscreen}</button>
+            <FullscreenAction label={ui.fullscreen} onOpen={openFullscreen} />
           </div>
           <p className="feedback" id="feedback" role="status">{feedback}</p>
         </div>
       </div>
-      <dialog id="fullscreen-dialog" ref={fullscreenDialog} aria-label={ui.fullscreen} onClose={restoreAfterFullscreen}>
-        <div className="fullscreen-field" ref={fullscreenField} onClick={() => fullscreenDialog.current.close()}>
-          <button className="fullscreen-exit" type="button" aria-label={ui.exitFullscreen} autoFocus><Icon name="exitFullscreen" /></button>
-        </div>
-      </dialog>
+      <FullscreenDialog fullscreen={fullscreen} label={ui.fullscreen} exitLabel={ui.exitFullscreen} />
     </section>
   );
 }

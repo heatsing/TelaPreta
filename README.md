@@ -1,4 +1,4 @@
-# Telapreta.cc
+# TelaPreta.cc
 
 A Next.js App Router site with 15 languages, fullscreen color previews, browser-generated PNG downloads, screen simulations, and a Portuguese monitor test. Content pages are generated at build time and served as static files.
 

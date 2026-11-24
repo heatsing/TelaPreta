@@ -12,7 +12,7 @@ export function NotFoundContent({ basePath, recoveryPages }) {
     const localized = recoveryPages[firstSegment];
     setCopy(localized);
     document.documentElement.lang = localized.lang;
-    document.title = `${localized.title} | Telapreta.cc`;
+    document.title = `${localized.title} | TelaPreta.cc`;
   }, [basePath, recoveryPages]);
 
   return (

@@ -162,7 +162,7 @@ body:has(#fullscreen-dialog[open]) { overflow: hidden; }
 .feedback:not(:empty) { margin-top: .4rem; }
 .monitor-shortcut { margin: .9rem 0 0; font-weight: 650; }
 .editorial { margin: 1.8rem 0 3.5rem; }
-.editorial section { scroll-margin-top: 1.1rem; }
+.editorial :is(section, #about, #faq) { scroll-margin-top: 1.1rem; }
 .editorial section + section { margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
 .editorial h2 { margin: 0 0 .48rem; font-size: clamp(1.3rem, 3vw, 1.55rem); font-weight: 710; letter-spacing: -.022em; line-height: 1.32; }
 .editorial h3 { margin: 1rem 0 .12rem; font-size: 1.04rem; font-weight: 680; line-height: 1.45; }
@@ -190,22 +190,19 @@ body:has(#fullscreen-dialog[open]) { overflow: hidden; }
   background: #232424;
   color: #f6f6f3;
 }
-.footer-inner { padding: 1.4rem clamp(.875rem, 3vw, 3.25rem) 1rem; }
+.footer-inner { max-width: 76rem; margin-inline: auto; padding: 1.4rem clamp(.875rem, 3vw, 3.25rem) 1rem; text-align: center; }
 .footer .brand { color: inherit; }
 .footer .brand-mark { background: #f1f1ed; color: #242525; }
 .footer p { margin: 0; }
 .footer .footer-description { margin-top: .38rem; color: #cbc9c4; font-size: .94rem; }
-.footer ul { display: flex; flex-wrap: wrap; gap: .18rem 1rem; padding: 0; margin: 0; list-style: none; }
+.footer ul { display: flex; flex-wrap: wrap; justify-content: center; gap: .18rem 1rem; padding: 0; margin: 0; list-style: none; }
 .footer li a { display: inline-block; padding-block: .23rem; color: #f6f6f3; text-decoration: none; font-size: .91rem; }
 .footer li a:hover, .footer li [aria-current="page"] { text-decoration: underline; }
 .footer a:focus-visible { outline-color: #becdff; }
 .footer-links { margin-top: .8rem; }
 .footer-languages { margin-top: .9rem; padding-top: .7rem; border-top: 1px solid #474745; }
 .footer-languages > p { color: #cbc9c4; font-size: .86rem; font-weight: 650; }
-.footer-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .35rem 1.25rem; margin-top: .95rem; color: #cbc9c4; font-size: .82rem; }
-.footer-icon-credit, .footer-icon-credit a { display: inline-flex; align-items: center; gap: .4rem; }
-.footer-icon-credit a { min-height: 1.5rem; color: inherit; }
-.footer-icon-credit img { padding: .12rem; border-radius: .2rem; background: #f6f6f3; }
+.footer .footer-copyright { margin-top: .95rem; color: #cbc9c4; font-size: .82rem; }
 @media (max-width: 34rem) {
   .footer-inner { padding-block: 1rem .8rem; }
 }

@@ -2,7 +2,7 @@ import { relativeHref, scenePathFor } from '../routes.mjs';
 import { sceneGalleryData } from '../scenes.mjs';
 import { SceneVisual } from './SceneVisual';
 
-export function SceneGallery({ locale, path }) {
+export function SceneGallery({ locale, path, currentSceneId }) {
   const { copy, groups } = sceneGalleryData(locale.lang);
 
   return (
@@ -15,7 +15,12 @@ export function SceneGallery({ locale, path }) {
             <ul role="list">
               {scenes.map(({ id, name }) => (
                 <li key={id}>
-                  <a className="scene-card" data-scene={id} href={relativeHref(path, scenePathFor(locale, id))}>
+                  <a
+                    className="scene-card"
+                    data-scene={id}
+                    href={relativeHref(path, scenePathFor(locale, id))}
+                    aria-current={id === currentSceneId ? 'page' : undefined}
+                  >
                     <SceneVisual id={id} copy={copy} />
                     <span className="scene-name">{name}</span>
                   </a>

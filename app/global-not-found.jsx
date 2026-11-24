@@ -33,7 +33,7 @@ const recoveryPages = Object.fromEntries(languages.map((locale) => [locale.base.
   linkLabel: locale.nav[0]
 }]));
 
-export const metadata = { title: `${recoveryPages[''].title} | Telapreta.cc` };
+export const metadata = { title: `${recoveryPages[''].title} | TelaPreta.cc` };
 
 export default function GlobalNotFound() {
   return (

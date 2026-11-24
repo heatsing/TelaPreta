@@ -1,25 +1,26 @@
-import { relativeHref, scenePathFor } from '../routes.mjs';
+import { scenePathFor } from '../routes.mjs';
 import { sceneGalleryData } from '../scenes.mjs';
+import { DisplayPageFrame, paletteLinks } from './DisplayPageFrame';
 import { ScenePlayerLoader } from './ScenePlayerLoader';
-import { SiteChrome } from './SiteChrome';
+import { ShareSection } from './ShareSection';
 
-export function ScenePage({ locale, scene, path, feedbackUrl }) {
-  const { copy, groups } = sceneGalleryData(locale.lang);
-  const group = groups.find(({ scenes }) => scenes.some(({ id }) => id === scene.id));
-  const relatedScenes = group.scenes.filter(({ id }) => id !== scene.id);
+export function ScenePage({ locale, scene, path, siteRoot, feedbackUrl }) {
+  const { copy } = sceneGalleryData(locale.lang);
 
   return (
-    <SiteChrome locale={locale} path={path} languagePath={(translated) => scenePathFor(translated, scene.id)} skipTarget="#scene-player" feedbackUrl={feedbackUrl}>
-      <header className="page-intro"><h1>{scene.title}</h1><p>{scene.description}</p></header>
-      <ScenePlayerLoader lang={locale.lang} scene={scene} copy={copy} />
-      <nav className="scene-related" aria-labelledby="scene-related-title">
-        <h2 id="scene-related-title">{group.heading}</h2>
-        <ul role="list">
-          {relatedScenes.map(({ id, name }) => (
-            <li key={id}><a href={relativeHref(path, scenePathFor(locale, id))}>{name}</a></li>
-          ))}
-        </ul>
-      </nav>
-    </SiteChrome>
+    <DisplayPageFrame
+      locale={locale}
+      path={path}
+      languagePath={(translated) => scenePathFor(translated, scene.id)}
+      title={scene.title}
+      description={scene.description}
+      tool={<ScenePlayerLoader lang={locale.lang} scene={scene} copy={copy} ui={locale.ui} colors={paletteLinks(locale, path)} />}
+      feedbackUrl={feedbackUrl}
+      currentSceneId={scene.id}
+    >
+      <div className="editorial">
+        <ShareSection copy={locale.share} url={siteRoot + path} title={`${scene.title} | TelaPreta.cc`} />
+      </div>
+    </DisplayPageFrame>
   );
 }

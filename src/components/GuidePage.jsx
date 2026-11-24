@@ -116,7 +116,7 @@ function AboutPage({ linkTo, feedbackUrl }) {
     <>
       <section aria-labelledby="sobre-ferramentas-title">
         <h2 id="sobre-ferramentas-title">Ferramentas para a sua tela</h2>
-        <p>O Telapreta.cc oferece telas de cor sólida em tela cheia, arquivos PNG gerados no navegador e simulações visuais. O <a href={linkTo(monitorTest)}>teste de monitor</a> reúne as cores de inspeção em uma sequência com instruções.</p>
+        <p>O TelaPreta.cc oferece telas de cor sólida em tela cheia, arquivos PNG gerados no navegador e simulações visuais. O <a href={linkTo(monitorTest)}>teste de monitor</a> reúne as cores de inspeção em uma sequência com instruções.</p>
       </section>
 
       <section id="contato" aria-labelledby="contato-title">
