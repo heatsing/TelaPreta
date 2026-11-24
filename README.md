@@ -1,6 +1,8 @@
 # Telapreta.cc
 
-A static black and white screen tool with 15 languages, browser-generated PNG downloads, and screen simulations.
+A static solid-color screen tool with 15 languages, fullscreen previews, browser-generated PNG downloads, and screen simulations.
+
+Each color has a dedicated URL, such as `/blue-screen/` or `/zh/blue-screen/`. The original language home pages and white-screen URLs, including `/White-screen/`, redirect to the corresponding color page.
 
 ## Netlify
 

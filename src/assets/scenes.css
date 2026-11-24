@@ -78,14 +78,14 @@
 #scene-dialog {
   width: min(47rem, calc(100% - 1.75rem)); max-height: min(90vh, 100% - 1.75rem);
   padding: .85rem; border: 1px solid var(--border); border-radius: .55rem;
-  background: #f8f8f5; color: #202122;
+  background: var(--quiet); color: var(--text);
 }
 #scene-dialog::backdrop { background: #171818a0; }
 .scene-dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .6rem; }
 .scene-dialog-header p { margin: 0 0 .1rem; color: var(--muted); font-size: .84rem; font-weight: 600; }
 .scene-dialog-header h2 { margin: 0; font-size: 1.2rem; line-height: 1.25; }
 .scene-dialog-header form { margin: 0; }
-.scene-close, .scene-dialog-actions button { min-height: 2.4rem; padding: .28rem .66rem; border: 1px solid #bfc0ba; border-radius: .3rem; background: white; color: #202122; font-size: .9rem; }
+.scene-close, .scene-dialog-actions button { min-height: 2.4rem; padding: .28rem .66rem; border: 1px solid var(--input-border); border-radius: .3rem; background: var(--paper); color: var(--text); font-size: .9rem; }
 .scene-dialog-actions { margin-top: .65rem; }
 .scene-dialog-visual .scene-visual { max-height: 65vh; }
 .scene-dialog-visual .radar-dial::before { animation: radar-sweep 4.8s linear infinite; }

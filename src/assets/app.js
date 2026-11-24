@@ -8,7 +8,11 @@ const language = document.querySelector('.language');
 const colorPicker = document.querySelector('#custom-color');
 const hexInput = document.querySelector('#color-hex');
 const hexError = document.querySelector('#color-hex-error');
-let currentColor = swatches[Number(tool.dataset.initial)].dataset.color;
+const fullscreenDialog = tool.querySelector('#fullscreen-dialog');
+const fullscreenField = fullscreenDialog.querySelector('.fullscreen-field');
+const initialColor = tool.dataset.initialColor;
+let currentColor = initialColor;
+let fullscreenOpener;
 
 function showHexError(visible) {
   if (visible) hexInput.setAttribute('aria-invalid', 'true');
@@ -26,10 +30,7 @@ function setColor(color, updateHex = true) {
   feedback.textContent = '';
   showHexError(false);
   for (const swatch of swatches) {
-    const match = swatch.dataset.color === color;
-    if (swatch.tagName === 'BUTTON') swatch.setAttribute('aria-pressed', String(match));
-    else if (match) swatch.setAttribute('aria-current', 'true');
-    else swatch.removeAttribute('aria-current');
+    swatch.toggleAttribute('data-selected', swatch.dataset.color === color);
   }
 }
 
@@ -52,11 +53,43 @@ function commitHex() {
   return true;
 }
 
-for (const swatch of swatches) {
-  if (swatch.tagName === 'BUTTON') {
-    swatch.addEventListener('click', () => setColor(swatch.dataset.color));
-  }
+for (const button of tool.querySelectorAll('[data-fullscreen]')) {
+  button.addEventListener('click', async () => {
+    if (!commitHex()) {
+      hexInput.focus();
+      return;
+    }
+    fullscreenOpener = button;
+    fullscreenDialog.showModal();
+    if (document.fullscreenEnabled) {
+      try {
+        await fullscreenField.requestFullscreen({ navigationUI: 'hide' });
+        if (!fullscreenDialog.open && document.fullscreenElement === fullscreenField) {
+          await document.exitFullscreen();
+        }
+      } catch {
+        // The dialog still fills the viewport when native fullscreen is unavailable.
+      }
+    }
+  });
 }
+
+fullscreenField.addEventListener('click', () => fullscreenDialog.close());
+fullscreenField.addEventListener('fullscreenchange', () => {
+  if (document.fullscreenElement !== fullscreenField && fullscreenDialog.open) fullscreenDialog.close();
+});
+fullscreenDialog.addEventListener('close', async () => {
+  if (document.fullscreenElement === fullscreenField) {
+    await document.exitFullscreen().catch(() => {});
+  }
+  if (!fullscreenDialog.open) fullscreenOpener.focus({ preventScroll: true });
+});
+
+tool.querySelector('.swatch[aria-current="page"]').addEventListener('click', (event) => {
+  if (event.button !== 0 || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+  event.preventDefault();
+  setColor(initialColor);
+});
 
 for (const eventName of ['input', 'change']) {
   colorPicker.addEventListener(eventName, () => setColor(colorPicker.value.toUpperCase()));

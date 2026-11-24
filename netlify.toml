@@ -1,3 +1,8 @@
 [build]
   command = "node build.mjs"
   publish = "dist"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "script-src 'self'"
