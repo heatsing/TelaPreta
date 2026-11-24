@@ -1,5 +1,6 @@
 import { basePath, pagesBuild } from '../src/site-config.mjs';
 import { NotFoundContent } from '../src/components/NotFoundContent';
+import { SiteAnalytics } from '../src/components/SiteAnalytics';
 import { pathFor } from '../src/routes.mjs';
 import { languages, legacyPages } from '../src/site.mjs';
 import '../src/assets/app.css';
@@ -40,6 +41,7 @@ export default function GlobalNotFound() {
       <body data-legacy-routes={pagesBuild ? JSON.stringify(caseRedirects) : undefined}>
         {pagesBuild && <script src={`${basePath}/assets/redirect.js`} defer />}
         <NotFoundContent basePath={basePath} recoveryPages={recoveryPages} />
+        <SiteAnalytics />
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 import { basePath } from '../../src/site-config.mjs';
 import { getPageBySegments } from '../../src/site.mjs';
+import { SiteAnalytics } from '../../src/components/SiteAnalytics';
 import '../../src/assets/app.css';
 import '../../src/assets/scenes.css';
 
@@ -21,7 +22,7 @@ export default async function RootLayout({ children, params }) {
   return (
     <html lang={lang} suppressHydrationWarning>
       <head><script src={`${basePath}/assets/theme-init.js`} /></head>
-      <body>{children}</body>
+      <body>{children}<SiteAnalytics /></body>
     </html>
   );
 }
