@@ -4,6 +4,7 @@ import { pathFor, relativeHref, screenColors } from '../routes.mjs';
 import { copyForPage } from '../site.mjs';
 import { Icon } from './Icon';
 import { SceneGallery } from './SceneGallery';
+import { ScreenSettings } from './ScreenSettings';
 import { ScreenTool } from './ScreenTool';
 import { ShareSection } from './ShareSection';
 import { SiteChrome } from './SiteChrome';
@@ -22,8 +23,11 @@ function Editorial({ locale, copy, mode, url, linkTo }) {
       </section>
       <section id="uses" aria-labelledby="uses-title">
         <h2 id="uses-title">{copy.usesTitle}</h2>
-        {copy.uses.map(([name, description]) => (
-          <Fragment key={name}><h3>{name}</h3><p>{description}</p></Fragment>
+        {copy.uses.map(([name, description, source]) => (
+          <Fragment key={name}>
+            <h3>{name}</h3>
+            <p>{description}{source && <> <a href={linkTo(source.href)}>{source.label}</a></>}</p>
+          </Fragment>
         ))}
       </section>
       <section id="como-usar" aria-labelledby="guide-title">
@@ -78,11 +82,14 @@ export function ScreenPage({ locale, color, path, siteRoot, feedbackUrl }) {
   const sizes = resolutions.map(([width, height], index) => ({ width, height, label: locale.sizes[index] }));
 
   return (
-    <SiteChrome locale={locale} path={path} languagePath={(translated) => pathFor(translated, color.id)} skipTarget="#tool" feedbackUrl={feedbackUrl} galleryOnPage={color.id === 'black'} toolOnPage>
+    <SiteChrome locale={locale} path={path} languagePath={(translated) => pathFor(translated, color.id)} skipTarget="#tool" feedbackUrl={feedbackUrl} galleryOnPage toolOnPage>
       <header className="page-intro"><h1>{copy.head}</h1><p>{copy.intro}</p></header>
-      <ScreenTool ui={locale.ui} initialColor={color.hex} colors={colors} resolutions={sizes} />
-      {color.id === 'black' && <SceneGallery locale={locale} path={path} />}
-      <Editorial locale={locale} copy={copy} mode={color.id} url={siteRoot + path} linkTo={linkTo} />
+      <ScreenSettings initialColor={color.hex}>
+        <ScreenTool ui={locale.ui} initialColor={color.hex} colors={colors} resolutions={sizes} />
+        {locale.lang === 'pt-BR' && <p className="monitor-shortcut"><a href={linkTo('/teste-de-monitor/')}>Teste de monitor</a></p>}
+        <SceneGallery locale={locale} path={path} />
+        <Editorial locale={locale} copy={copy} mode={color.id} url={siteRoot + path} linkTo={linkTo} />
+      </ScreenSettings>
     </SiteChrome>
   );
 }

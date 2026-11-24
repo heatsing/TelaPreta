@@ -6,7 +6,7 @@ export const locales = {
     nav: ['Tela preta', 'Tela branca', 'Como usar'], language: 'Idioma', mainNav: 'Navegação principal', skip: 'Pular para a ferramenta',
     share: { title: "Compartilhar", copy: "Copiar link", native: "Mais opções", copied: "Link copiado.", manual: "Selecione e copie o link." },
     ui: { preview: 'Prévia da tela', colors: 'Cores da tela', customColor: 'Cor personalizada', invalidHex: 'Digite uma cor HEX válida, por exemplo #336699.', resolution: 'Resolução da imagem', download: 'Baixar PNG', ready: 'PNG gerado.', failed: 'Não foi possível gerar a imagem. Tente uma resolução menor.', footerNav: 'Ferramentas e ajuda', footerLanguages: 'Idiomas', footerAbout: 'Sobre a ferramenta', faq: 'Perguntas frequentes', footer: 'Telas de cor sólida e imagens PNG no navegador.', compare: 'O que observar em cada cor', related: 'Experimente outra cor de tela', format: 'Formato', dimensions: 'Dimensões', choose: 'Escolher resolução', fullscreen: 'Tela cheia', exitFullscreen: 'Sair da tela cheia', coverage: 'Use o botão no canto inferior direito da prévia para ver a cor em tela cheia. Clique ou toque na tela, ou pressione Esc para sair.' },
-    colors: ['Preto', 'Branco', 'Vermelho', 'Verde', 'Azul', 'Cinza'], sizes: ['HD', 'Full HD', 'QHD', '4K UHD', 'Celular', 'Quadrado'],
+    colors: ['Preto', 'Branco', 'Vermelho', 'Verde', 'Azul', 'Cinza', 'Amarelo', 'Laranja', 'Rosa', 'Roxo', 'Luz para Zoom'], sizes: ['HD', 'Full HD', 'QHD', '4K UHD', 'Celular', 'Quadrado'],
     compare: [['Preto', 'Veja se algum ponto continua aceso. No LCD, observe também as bordas.'], ['Branco', 'Procure pontos escuros, manchas e diferenças de brilho.'], ['Vermelho, verde e azul', 'Compare um mesmo ponto nas três cores primárias.'], ['Cinza', 'Procure áreas com tons diferentes em um fundo intermediário.']],
     black: {
       head: 'Tela preta online',
@@ -40,7 +40,7 @@ export const locales = {
     nav: ['Black Screen', 'White Screen', 'How to Use'], language: 'Language', mainNav: 'Main navigation', skip: 'Skip to tool',
     share: { title: "Share", copy: "Copy link", native: "More options", copied: "Link copied.", manual: "Select and copy the link." },
     ui: { preview: 'Screen preview', colors: 'Screen colors', customColor: 'Custom color', invalidHex: 'Enter a valid hex color, such as #336699.', resolution: 'Image resolution', download: 'Download PNG', ready: 'PNG generated.', failed: 'Could not generate the image. Try a smaller resolution.', footerNav: 'Tools and help', footerLanguages: 'Languages', footerAbout: 'About the tool', faq: 'Frequently asked questions', footer: 'Solid-color screens and PNG backgrounds in your browser.', compare: 'What to look for on each color', related: 'Try another screen color', format: 'Format', dimensions: 'Dimensions', choose: 'Choose a resolution', fullscreen: 'Fullscreen', exitFullscreen: 'Exit fullscreen', coverage: 'Use the button in the lower-right corner of the preview to see the color in fullscreen. Click or tap the screen, or press Esc to exit.' },
-    colors: ['Black', 'White', 'Red', 'Green', 'Blue', 'Gray'], sizes: ['HD', 'Full HD', 'QHD', '4K UHD', 'Phone', 'Square'],
+    colors: ['Black', 'White', 'Red', 'Green', 'Blue', 'Gray', 'Yellow', 'Orange', 'Pink', 'Purple', 'Zoom Lighting'], sizes: ['HD', 'Full HD', 'QHD', '4K UHD', 'Phone', 'Square'],
     compare: [['Black', 'Look for tiny dots that stay lit. On an LCD, check the edges as well.'], ['White', 'Look for dark dots, patches of tint, or dimmer areas.'], ['Red, green, and blue', 'See whether a spot changes as you switch between the primary colors.'], ['Gray', 'Compare the brightness and tint from one area of the display to another.']],
     black: {
       head: 'Black Screen Online',
@@ -74,7 +74,7 @@ export const locales = {
     nav: ['Layar hitam', 'Layar putih', 'Cara pakai'], language: 'Bahasa', mainNav: 'Navigasi utama', skip: 'Langsung ke alat',
     share: { title: "Bagikan", copy: "Salin tautan", native: "Opsi lain", copied: "Tautan disalin.", manual: "Pilih dan salin tautan." },
     ui: { preview: 'Pratinjau layar', colors: 'Warna layar', customColor: 'Warna pilihan', invalidHex: 'Masukkan kode HEX yang valid, misalnya #336699.', resolution: 'Resolusi gambar', download: 'Unduh PNG', ready: 'PNG sudah dibuat.', failed: 'Gambar tidak dapat dibuat. Coba resolusi lebih kecil.', footerNav: 'Alat dan bantuan', footerLanguages: 'Pilihan bahasa', footerAbout: 'Tentang alat ini', faq: 'Pertanyaan umum', footer: 'Tampilkan warna polos dan buat gambar PNG langsung di browser.', compare: 'Yang perlu diperhatikan pada tiap warna', related: 'Coba warna layar lain', format: 'Format', dimensions: 'Ukuran gambar', choose: 'Pilih resolusi', fullscreen: 'Layar penuh', exitFullscreen: 'Keluar dari layar penuh', coverage: 'Gunakan tombol di sudut kanan bawah pratinjau untuk melihat warna dalam layar penuh. Klik atau ketuk layar, atau tekan Esc untuk keluar.' },
-    colors: ['Hitam', 'Putih', 'Merah', 'Hijau', 'Biru', 'Abu-abu'], sizes: ['HD', 'Full HD', 'QHD', '4K UHD', 'HP', 'Persegi'],
+    colors: ['Hitam', 'Putih', 'Merah', 'Hijau', 'Biru', 'Abu-abu', 'Kuning', 'Jingga', 'Merah muda', 'Ungu', 'Cahaya Zoom'], sizes: ['HD', 'Full HD', 'QHD', '4K UHD', 'HP', 'Persegi'],
     compare: [['Hitam', 'Cek apakah ada titik yang terus menyala di tempat yang sama.'], ['Putih', 'Lihat titik gelap, bercak warna, dan bagian yang kurang terang.'], ['Merah, hijau, dan biru', 'Amati titik yang sama saat tiga warna dasar ditampilkan bergantian.'], ['Abu-abu', 'Bandingkan warna dan kecerahan di bagian tengah dan tepi layar.']],
     black: {
       head: 'Layar Hitam Online',
@@ -108,7 +108,7 @@ export const locales = {
     nav: ['Pantalla negra', 'Pantalla blanca', 'Cómo usarla'], language: 'Idioma', mainNav: 'Menú principal', skip: 'Ir a la herramienta',
     share: { title: "Compartir", copy: "Copiar enlace", native: "Más opciones", copied: "Enlace copiado.", manual: "Selecciona y copia el enlace." },
     ui: { preview: 'Vista previa', colors: 'Colores de pantalla', customColor: 'Color personalizado', invalidHex: 'Introduce un color HEX válido, como #336699.', resolution: 'Resolución de la imagen', download: 'Descargar PNG', ready: 'PNG generado.', failed: 'No se pudo crear la imagen. Prueba con una resolución menor.', footerNav: 'Herramientas y ayuda', footerLanguages: 'Idiomas', footerAbout: 'Acerca de la herramienta', faq: 'Preguntas frecuentes', footer: 'Pantallas de color sólido e imágenes PNG desde el navegador.', compare: 'Qué revisar con cada color', related: 'Prueba otro color de pantalla', format: 'Formato', dimensions: 'Dimensiones', choose: 'Elegir resolución', fullscreen: 'Pantalla completa', exitFullscreen: 'Salir de pantalla completa', coverage: 'Usa el botón de la esquina inferior derecha de la vista previa para ver el color a pantalla completa. Haz clic, toca la pantalla o presiona Esc para salir.' },
-    colors: ['Negro', 'Blanco', 'Rojo', 'Verde', 'Azul', 'Gris'], sizes: ['HD', 'Full HD', 'QHD', '4K UHD', 'Móvil', 'Cuadrado'],
+    colors: ['Negro', 'Blanco', 'Rojo', 'Verde', 'Azul', 'Gris', 'Amarillo', 'Naranja', 'Rosa', 'Morado', 'Luz para Zoom'], sizes: ['HD', 'Full HD', 'QHD', '4K UHD', 'Móvil', 'Cuadrado'],
     compare: [['Negro', 'Busca puntos que se queden encendidos y revisa las esquinas del panel.'], ['Blanco', 'Observa puntos oscuros, manchas o cambios de brillo.'], ['Rojo, verde y azul', 'Alterna los colores primarios para comprobar el mismo punto.'], ['Gris', 'Compara el tono entre distintas zonas del monitor.']],
     black: {
       head: 'Pantalla negra online',
@@ -142,7 +142,7 @@ export const locales = {
     nav: ['黑屏', '白屏', '使用方法'], language: '语言', mainNav: '主导航', skip: '跳转到工具',
     share: { title: "分享", copy: "复制链接", native: "更多方式", copied: "链接已复制。", manual: "请选择并复制链接。" },
     ui: { preview: '屏幕预览', colors: '屏幕颜色', customColor: '自定义颜色', invalidHex: '请输入有效的 HEX 色值，例如 #336699。', resolution: '图片分辨率', download: '下载 PNG', ready: 'PNG 已生成。', failed: '图片生成失败，请试试较低的分辨率。', footerNav: '工具与帮助', footerLanguages: '网站语言', footerAbout: '关于工具', faq: '常见问题', footer: '在线显示纯色画面，在浏览器内生成 PNG 图片。', compare: '不同底色可以看什么', related: '切换到另一种颜色', format: '预设', dimensions: '图片尺寸', choose: '选择分辨率', fullscreen: '全屏', exitFullscreen: '退出全屏', coverage: '点击预览右下角的按钮，即可全屏显示当前颜色。点击或轻触画面，或按 Esc 退出。' },
-    colors: ['黑色', '白色', '红色', '绿色', '蓝色', '灰色'], sizes: ['HD', '全高清', 'QHD', '4K UHD', '手机竖屏', '正方形'],
+    colors: ['黑色', '白色', '红色', '绿色', '蓝色', '灰色', '黄色', '橙色', '粉色', '紫色', 'Zoom 补光'], sizes: ['HD', '全高清', 'QHD', '4K UHD', '手机竖屏', '正方形'],
     compare: [['黑色', '观察有没有一直亮着的小点，顺便看看 LCD 面板边缘的亮度。'], ['白色', '查看固定暗点、色斑和亮度不均。'], ['红、绿、蓝', '轮流比较同一个点在三种原色下的表现。'], ['灰色', '查看屏幕中央和边缘的明暗或颜色是否均匀。']],
     black: {
       head: '在线黑屏',
@@ -173,14 +173,14 @@ export const locales = {
   },
   ja: {
     lang: 'ja', native: '日本語', base: '/ja/', previousWhitePath: 'white-screen',
-    nav: ['黒画面', '白画面', '使い方'], language: '言語', mainNav: 'メインメニュー', skip: 'ツールに移動',
+    nav: ['黒い画面', '白い 画面', '使い方'], language: '言語', mainNav: 'メインメニュー', skip: 'ツールに移動',
     share: { title: "共有", copy: "リンクをコピー", native: "その他の共有方法", copied: "リンクをコピーしました。", manual: "リンクを選択してコピーしてください。" },
     ui: { preview: '画面プレビュー', colors: '画面の色', customColor: '色を指定', invalidHex: '有効なカラーコードを入力してください。例：#336699', resolution: '画像の解像度', download: 'PNGをダウンロード', ready: 'PNG画像を作成しました。', failed: '画像を作成できませんでした。解像度を下げてお試しください。', footerNav: 'ツールとヘルプ', footerLanguages: '対応言語', footerAbout: 'ツールについて', faq: 'よくある質問', footer: 'ブラウザーで単色表示とPNG画像の作成ができます。', compare: '色ごとのチェックポイント', related: '別の画面色を試す', format: '種類', dimensions: '画像サイズ', choose: '解像度を選ぶ', fullscreen: '全画面表示', exitFullscreen: '全画面表示を終了', coverage: 'プレビュー右下のボタンを押すと、選んだ色が全画面で表示されます。画面をクリックまたはタップするか、Esc キーを押すと終了します。' },
-    colors: ['黒', '白', '赤', '緑', '青', 'グレー'], sizes: ['HD', 'フルHD', 'QHD', '4K UHD', 'スマホ縦長', '正方形'],
+    colors: ['黒', '白', '赤', '緑', '青', 'グレー', '黄', 'オレンジ', 'ピンク', '紫', 'Zoom 照明'], sizes: ['HD', 'フルHD', 'QHD', '4K UHD', 'スマホ縦長', '正方形'],
     compare: [['黒', '点灯したままの輝点や、液晶画面の端の明るさを見ます。'], ['白', '黒点、色ムラ、明るさが異なる部分を探します。'], ['赤・緑・青', '三原色を切り替えながら、同じ位置の見え方を比べます。'], ['グレー', '中央と周辺で、色や明るさに差がないか確認します。']],
     black: {
-      head: '黒画面を表示',
-      meta: 'ブラウザーで真っ黒な画面を表示。モニターの輝点やドット抜けをチェックし、4Kやスマホ用の黒い背景をPNGで保存できます。',
+      head: '黒い画面を表示',
+      meta: '黒い画面をブラウザーで全画面表示。モニターの輝点やドット抜けをチェックし、4Kやスマホ用の黒い背景をPNGで保存できます。',
       intro: '真っ黒な画面を表示してモニターの輝点を確認。黒一色のPNG画像も保存できます。',
       definition: ['黒画面ツールとは？', 'ブラウザーで黒一色（#000000）を表示する無料ツールです。光ったままの点を探したり、サブモニターの表示を暗くしたり、黒い壁紙を作ったりできます。'],
       usesTitle: '黒い画面の使い道',
@@ -192,8 +192,8 @@ export const locales = {
       faq: [['真っ黒な画面を出すには？', 'このページを開いて黒を選びます。プレビュー領域に黒一色が表示されます。'], ['黒画面を表示するとモニターの電源は切れますか？', 'モニターの電源は入ったままで、表示だけが黒になります。電源を切るときは機器側の操作を使ってください。'], ['ドット抜けチェックに使えますか？', '黒では点灯し続けている輝点が見つけやすくなります。暗い点を探す場合は、白画面やほかの単色でも確認してください。'], ['4Kの黒い画像は保存できますか？', '4K UHDを選ぶと、3840 × 2160のPNGが作成されます。'], ['黒い画面でバッテリーを節約できますか？', '有機ELでは黒い部分の消費電力が減る場合があります。一般的な液晶画面は黒を表示していてもバックライトが点灯します。']]
     },
     white: {
-      head: '白画面を表示',
-      meta: '真っ白な画面でモニターの黒点や色ムラを確認。フルHD、4K、スマホ用の白無地PNG画像も保存できます。',
+      head: '白い 画面を表示',
+      meta: '白い 画面をブラウザーで全画面表示し、モニターの黒点や色ムラを確認。フルHD、4K、スマホ用の白無地PNG画像も保存できます。',
       intro: '真っ白な画面で黒点や色ムラを確認。白無地のPNG画像もブラウザーから保存できます。',
       definition: ['白画面ツールとは？', 'ブラウザーで白一色（#FFFFFF）を表示する無料ツールです。暗い点や色ムラを見つけやすく、写真を撮るときの補助光や資料の背景にも使えます。'],
       usesTitle: '白い画面の使い道',
@@ -210,7 +210,7 @@ export const locales = {
     nav: ['검은 화면', '흰 화면', '사용 방법'], language: '언어', mainNav: '주 메뉴', skip: '도구로 이동',
     share: { title: "공유", copy: "링크 복사", native: "더 많은 옵션", copied: "링크가 복사되었습니다.", manual: "링크를 선택해 복사하세요." },
     ui: { preview: '화면 미리보기', colors: '화면 색상', customColor: '사용자 지정 색상', invalidHex: '올바른 HEX 색상 코드를 입력하세요. 예: #336699', resolution: '이미지 해상도', download: 'PNG 다운로드', ready: 'PNG를 만들었습니다.', failed: '이미지를 만들지 못했습니다. 더 낮은 해상도로 시도해 주세요.', footerNav: '도구 및 도움말', footerLanguages: '지원 언어', footerAbout: '도구 소개', faq: '자주 묻는 질문', footer: '브라우저에서 단색 화면을 띄우고 PNG 배경을 만드세요.', compare: '색상별로 확인할 부분', related: '다른 화면 색상 열기', format: '형식', dimensions: '이미지 크기', choose: '해상도 선택', fullscreen: '전체 화면', exitFullscreen: '전체 화면 종료', coverage: '미리보기 오른쪽 아래의 버튼을 눌러 색상을 전체 화면으로 확인하세요. 화면을 클릭하거나 터치하거나 Esc 키를 누르면 종료됩니다.' },
-    colors: ['검정', '흰색', '빨강', '초록', '파랑', '회색'], sizes: ['HD', 'Full HD', 'QHD', '4K UHD', '휴대폰 세로', '정사각형'],
+    colors: ['검정', '흰색', '빨강', '초록', '파랑', '회색', '노랑', '주황', '분홍', '보라', 'Zoom 조명'], sizes: ['HD', 'Full HD', 'QHD', '4K UHD', '휴대폰 세로', '정사각형'],
     compare: [['검정', '계속 켜져 있는 점과 LCD 화면 가장자리의 밝기를 살펴보세요.'], ['흰색', '어두운 점이나 색 얼룩, 밝기가 고르지 않은 곳을 찾아보세요.'], ['빨강·초록·파랑', '세 가지 색을 바꿔 가며 같은 자리에 점이 보이는지 확인하세요.'], ['회색', '화면 가운데와 모서리의 밝기와 색이 고른지 살펴보세요.']],
     black: {
       head: '검은 화면 띄우기',

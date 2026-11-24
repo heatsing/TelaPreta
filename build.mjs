@@ -8,7 +8,7 @@ const [argument] = process.argv.slice(2);
 if (argument === '--pages') process.env.TELAPRETA_BUILD_TARGET = 'pages';
 else if (argument) process.env.TELAPRETA_PREVIEW_URL = argument;
 
-const { basePath, pagesBuild } = await import('./src/site-config.mjs');
+const { basePath, pagesBuild, previewBuild, siteRoot } = await import('./src/site-config.mjs');
 const workspace = await realpath(new URL('./', import.meta.url));
 
 async function buildDirectory(name) {
@@ -60,6 +60,6 @@ const build = spawnSync(process.execPath, [next, 'build'], { cwd: workspace, std
 if (build.error) throw build.error;
 if (build.status !== 0) process.exit(build.status ?? 1);
 
-const { pageCount, redirectCount } = await finalizeExport({ output, basePath, pagesBuild });
+const { pageCount, redirectCount } = await finalizeExport({ output, basePath, pagesBuild, previewBuild, siteRoot });
 if (destination) await publishPages(output, destination);
 console.log(`Prepared ${pageCount} App Router pages and ${redirectCount} legacy routes in ${pagesBuild ? 'docs' : 'out'}/`);

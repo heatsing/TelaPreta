@@ -1,10 +1,11 @@
 import { notFound } from 'next/navigation';
 import { ScenePage } from '../../src/components/ScenePage.jsx';
 import { ScreenPage } from '../../src/components/ScreenPage.jsx';
-import { locales } from '../../src/locales.mjs';
-import { pathFor, relativeHref, scenePathFor } from '../../src/routes.mjs';
+import { GuidePage } from '../../src/components/GuidePage.jsx';
+import { MonitorTestPage } from '../../src/components/MonitorTestPage.jsx';
+import { relativeHref } from '../../src/routes.mjs';
 import { basePath, feedbackUrl, previewBuild, siteRoot } from '../../src/site-config.mjs';
-import { copyForPage, getPageBySegments, languages, staticPages } from '../../src/site.mjs';
+import { copyForPage, getPageBySegments, languageAlternates, staticPages } from '../../src/site.mjs';
 
 export const dynamicParams = false;
 
@@ -20,7 +21,8 @@ async function findPage(params) {
 }
 
 export async function generateMetadata({ params }) {
-  const { color, scene, locale, path, target, label } = await findPage(params);
+  const page = await findPage(params);
+  const { color, scene, guide, monitor, locale, path, target, label } = page;
   if (target) {
     return {
       title: `${label} | Telapreta.cc`,
@@ -29,13 +31,12 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const copy = scene ? { head: scene.name, meta: scene.description } : copyForPage(locale, color);
+  const detail = scene ?? guide ?? monitor;
+  const copy = detail ? { head: detail.title, meta: detail.description } : copyForPage(locale, color);
   const title = `${copy.head} | Telapreta.cc`;
   const description = copy.meta.replace(/\p{L}/u, (letter) => letter.toLocaleUpperCase(locale.lang));
   const url = siteRoot + path;
-  const localizedPath = scene ? (language) => scenePathFor(language, scene.id) : (language) => pathFor(language, color.id);
-  const translatedUrls = Object.fromEntries(languages.map((language) => [language.lang, siteRoot + localizedPath(language)]));
-  translatedUrls['x-default'] = siteRoot + localizedPath(locales.pt);
+  const translatedUrls = languageAlternates(page, siteRoot);
 
   return {
     title,
@@ -66,6 +67,6 @@ function LegacyRedirect({ path, target, label }) {
 export default async function Page({ params }) {
   const page = await findPage(params);
   if (page.target) return <LegacyRedirect {...page} />;
-  const Content = page.scene ? ScenePage : ScreenPage;
+  const Content = page.scene ? ScenePage : page.monitor ? MonitorTestPage : page.guide ? GuidePage : ScreenPage;
   return <Content {...page} siteRoot={siteRoot} feedbackUrl={feedbackUrl} />;
 }

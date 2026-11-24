@@ -1,17 +1,23 @@
 'use client';
 
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { defaultResolution, useScreenSettings } from './ScreenSettings';
 
 const subscribe = () => () => {};
 const getNativeShareSupport = () => typeof navigator.share === 'function';
 const getServerShareSupport = () => false;
 
 export function ShareSection({ copy, url, title }) {
+  const settings = useScreenSettings();
   const [status, setStatus] = useState('');
   const [manual, setManual] = useState(false);
   const field = useRef(null);
   const canShare = useSyncExternalStore(subscribe, getNativeShareSupport, getServerShareSupport);
-  const encodedUrl = encodeURIComponent(url);
+  const share = new URL(url);
+  if (settings && settings.color !== settings.initialColor) share.searchParams.set('color', settings.color.slice(1));
+  if (settings && settings.resolution !== defaultResolution) share.searchParams.set('resolution', settings.resolution);
+  const shareUrl = share.href;
+  const encodedUrl = encodeURIComponent(shareUrl);
   const destinations = [
     ['WhatsApp', `https://wa.me/?text=${encodedUrl}`],
     ['Facebook', `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`],
@@ -35,7 +41,7 @@ export function ShareSection({ copy, url, title }) {
 
   async function copyLink() {
     try {
-      await navigator.clipboard.writeText(url);
+      await navigator.clipboard.writeText(shareUrl);
       setManual(false);
       setStatus(copy.copied);
     } catch {
@@ -45,7 +51,7 @@ export function ShareSection({ copy, url, title }) {
 
   async function nativeShare() {
     try {
-      await navigator.share({ title, url });
+      await navigator.share({ title, url: shareUrl });
     } catch (error) {
       if (error.name !== 'AbortError') showManualShare();
     }
@@ -62,7 +68,7 @@ export function ShareSection({ copy, url, title }) {
         ))}
       </div>
       <p className="share-status" role="status">{status}</p>
-      <input id="share-url" type="url" ref={field} value={url} aria-label={copy.copy} readOnly hidden={!manual} />
+      <input id="share-url" type="url" ref={field} value={shareUrl} aria-label={copy.copy} readOnly hidden={!manual} />
     </section>
   );
 }

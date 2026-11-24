@@ -6,6 +6,6 @@
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
 [[headers]]
-  for = "/*"
+  for = "/_next/static/*"
   [headers.values]
-    Content-Security-Policy = "script-src 'self' https://www.googletagmanager.com"
+    Cache-Control = "public, max-age=31536000, immutable"

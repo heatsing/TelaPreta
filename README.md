@@ -1,6 +1,6 @@
 # Telapreta.cc
 
-A Next.js App Router site with 15 languages, fullscreen color previews, browser-generated PNG downloads, and screen simulations. All 315 content pages are generated at build time and served as static files.
+A Next.js App Router site with 15 languages, fullscreen color previews, browser-generated PNG downloads, screen simulations, and a Portuguese monitor test. Content pages are generated at build time and served as static files.
 
 Each color has a dedicated URL, such as `/blue-screen/` or `/zh/blue-screen/`. The original language home pages and white-screen URLs, including `/White-screen/`, redirect to the corresponding color page.
 

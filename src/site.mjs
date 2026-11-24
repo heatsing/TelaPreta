@@ -1,5 +1,7 @@
 import { colorPageCopy, colorPageLabel } from './color-page-copy.mjs';
+import { guidePages } from './guide-pages.mjs';
 import { locales } from './locales.mjs';
+import { sceneGuidance } from './scene-guidance.mjs';
 import { sceneGalleryData } from './scenes.mjs';
 import { aliasesFor, pathFor, scenePathFor, screenColors } from './routes.mjs';
 
@@ -33,10 +35,30 @@ export const scenePages = languages.flatMap((locale) => sceneGalleryData(locale.
   scenes.map((scene) => ({
     path: scenePathFor(locale, scene.id),
     locale,
-    scene: { ...scene, description: sceneDescription[locale.lang](scene.name) }
+    scene: sceneGuidance(locale.lang, scene, sceneDescription[locale.lang](scene.name))
   }))
 ));
-export const contentPages = [...screenPages, ...scenePages];
+export const monitorPage = {
+  path: '/teste-de-monitor/',
+  locale: locales.pt,
+  monitor: {
+    title: 'Teste de monitor online',
+    description: 'Teste a tela em seis cores em uma única sessão de tela cheia. Encontre pontos suspeitos e compare pixels mortos, presos e sujeira.'
+  },
+  updatedOn: '2026-11-24'
+};
+
+const editorialPages = guidePages.map((guide) => ({ path: guide.path, locale: locales.pt, guide, updatedOn: guide.updatedOn }));
+export const contentPages = [screenPages[0], monitorPage, ...screenPages.slice(1), ...scenePages, ...editorialPages];
+
+export function languageAlternates({ scene, color }, siteRoot) {
+  if (!scene && !color) return undefined;
+  const localized = scene ? (locale) => scenePathFor(locale, scene.id) : (locale) => pathFor(locale, color.id);
+  return Object.fromEntries([
+    ...languages.map((locale) => [locale.lang, siteRoot + localized(locale)]),
+    ['x-default', siteRoot + localized(locales.pt)]
+  ]);
+}
 
 export const legacyPages = languages.flatMap((locale) => aliasesFor(locale).map(([path, colorId]) => {
   const target = pathFor(locale, colorId);

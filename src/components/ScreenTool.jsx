@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Icon } from './Icon';
+import { useScreenSettings } from './ScreenSettings';
 
 function parseHex(text, allowShort = false) {
   const digits = text.trim().replace(/^#/, '').toUpperCase();
@@ -24,16 +25,26 @@ function savePng(png, filename) {
 }
 
 export function ScreenTool({ ui, initialColor, colors, resolutions }) {
-  const [color, setColor] = useState(initialColor);
+  const { color, setColor, resolution, setResolution } = useScreenSettings();
   const [hexText, setHexText] = useState(initialColor);
   const [hexError, setHexError] = useState(false);
   const [feedback, setFeedback] = useState('');
   const [downloading, setDownloading] = useState(false);
   const hexInput = useRef(null);
-  const resolution = useRef(null);
   const fullscreenDialog = useRef(null);
   const fullscreenField = useRef(null);
   const fullscreenOpener = useRef(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const selected = parseHex(params.get('color') ?? '', true);
+    const size = params.get('resolution');
+    if (selected) {
+      setColor(selected);
+      setHexText(selected);
+    }
+    if (resolutions.some(({ width, height }) => `${width}x${height}` === size)) setResolution(size);
+  }, [resolutions, setColor, setResolution]);
 
   useEffect(() => {
     const dialog = fullscreenDialog.current;
@@ -121,7 +132,7 @@ export function ScreenTool({ ui, initialColor, colors, resolutions }) {
       return;
     }
 
-    const [width, height] = resolution.current.value.split('x').map(Number);
+    const [width, height] = resolution.split('x').map(Number);
     const name = `telapreta-${nextColor.slice(1).toLowerCase()}-${width}x${height}.png`;
     const canvas = document.createElement('canvas');
     setDownloading(true);
@@ -206,7 +217,7 @@ export function ScreenTool({ ui, initialColor, colors, resolutions }) {
           <label htmlFor="resolution">{ui.resolution}</label>
           <div className="download-actions">
             <div className="select-wrap">
-              <select id="resolution" ref={resolution} defaultValue="1920x1080">
+              <select id="resolution" value={resolution} onChange={(event) => setResolution(event.currentTarget.value)}>
                 {resolutions.map(({ width, height, label }) => (
                   <option key={`${width}x${height}`} value={`${width}x${height}`}>{label} · {width} × {height}</option>
                 ))}

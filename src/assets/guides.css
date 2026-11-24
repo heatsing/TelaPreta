@@ -1,0 +1,9 @@
+.guide-article { margin-top: 0; }
+.guide-article table { width: 100%; table-layout: fixed; color: var(--body-copy); }
+.guide-article th, .guide-article td { overflow-wrap: anywhere; vertical-align: top; }
+.guide-article th:first-child { width: 24%; }
+.guide-article p + p, .guide-article table + p, .guide-article ol + p { margin-top: .8rem; }
+
+@media (max-width: 34rem) {
+  .guide-article th, .guide-article td { padding-inline: .35rem; }
+}

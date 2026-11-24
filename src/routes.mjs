@@ -6,7 +6,12 @@ export const screenColors = [
   { id: 'red', slug: 'red-screen', hex: '#FF0000' },
   { id: 'green', slug: 'green-screen', hex: '#00FF00' },
   { id: 'blue', slug: 'blue-screen', hex: '#0000FF' },
-  { id: 'gray', slug: 'gray-screen', hex: '#808080' }
+  { id: 'gray', slug: 'gray-screen', hex: '#808080' },
+  { id: 'yellow', slug: 'yellow-screen', hex: '#FFFF00' },
+  { id: 'orange', slug: 'orange-screen', hex: '#FFA500' },
+  { id: 'pink', slug: 'pink-screen', hex: '#FFC0CB' },
+  { id: 'purple', slug: 'purple-screen', hex: '#800080' },
+  { id: 'zoom-lighting', slug: 'zoom-lighting', hex: '#FFE4CC' }
 ];
 
 const colorsById = new Map(screenColors.map((color) => [color.id, color]));

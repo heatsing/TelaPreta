@@ -22,6 +22,12 @@ const themeLabels = {
   ms: ['Rupa', 'Cerah', 'Gelap']
 };
 
+const iconCreditsLabels = {
+  'pt-BR': 'Ícones', en: 'Icons', id: 'Ikon', es: 'Iconos', 'zh-Hans': '图标',
+  ja: 'アイコン', ko: '아이콘', de: 'Symbole', fr: 'Icônes', uk: 'Іконки',
+  pl: 'Ikony', it: 'Icone', tr: 'Simgeler', sv: 'Ikoner', ms: 'Ikon'
+};
+
 function Brand({ href }) {
   return (
     <a className="brand" href={href}>
@@ -94,10 +100,18 @@ function Footer({ locale, linkTo, languageHref, toolOnPage }) {
     [`${toolPath}#como-usar`, locale.nav[2]],
     [`${toolPath}#faq`, ui.faq]
   ];
+  if (locale.lang === 'pt-BR') {
+    links.push(
+      ['/teste-de-monitor/', 'Teste de monitor'],
+      ['/como-testar-monitor/', 'Como testar um monitor'],
+      ['/pixel-morto-pixel-preso-ou-sujeira/', 'Pixel morto, pixel preso ou sujeira?'],
+      ['/sobre/', 'Sobre o site']
+    );
+  }
 
   return (
     <footer className="footer">
-      <div className="footer-inner shell">
+      <div className="footer-inner">
         <Brand href={linkTo(blackPath)} />
         <p className="footer-description">{ui.footer}</p>
         <nav className="footer-links" aria-label={ui.footerNav}>
@@ -107,7 +121,13 @@ function Footer({ locale, linkTo, languageHref, toolOnPage }) {
           <p id="footer-languages-title">{ui.footerLanguages}</p>
           <ul role="list"><LanguageLinks locale={locale} languageHref={languageHref} /></ul>
         </nav>
-        <p className="footer-copyright">© {new Date().getUTCFullYear()} Telapreta.cc</p>
+        <div className="footer-meta">
+          <p className="footer-copyright">© {new Date().getUTCFullYear()} Telapreta.cc</p>
+          <p className="footer-icon-credit">
+            <span>{iconCreditsLabels[locale.lang]}</span>
+            <a href="https://lucide.dev/"><img src={linkTo('/assets/lucide.svg')} width="20" height="20" alt="" />Lucide</a>
+          </p>
+        </div>
       </div>
     </footer>
   );

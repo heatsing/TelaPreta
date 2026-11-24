@@ -1,6 +1,6 @@
 import { relativeHref, scenePathFor } from '../routes.mjs';
 import { sceneGalleryData } from '../scenes.mjs';
-import { ScenePlayer } from './ScenePlayer';
+import { ScenePlayerLoader } from './ScenePlayerLoader';
 import { SiteChrome } from './SiteChrome';
 
 export function ScenePage({ locale, scene, path, feedbackUrl }) {
@@ -10,8 +10,8 @@ export function ScenePage({ locale, scene, path, feedbackUrl }) {
 
   return (
     <SiteChrome locale={locale} path={path} languagePath={(translated) => scenePathFor(translated, scene.id)} skipTarget="#scene-player" feedbackUrl={feedbackUrl}>
-      <header className="page-intro"><h1>{scene.name}</h1></header>
-      <ScenePlayer lang={locale.lang} scene={scene} copy={copy} />
+      <header className="page-intro"><h1>{scene.title}</h1><p>{scene.description}</p></header>
+      <ScenePlayerLoader lang={locale.lang} scene={scene} copy={copy} />
       <nav className="scene-related" aria-labelledby="scene-related-title">
         <h2 id="scene-related-title">{group.heading}</h2>
         <ul role="list">
