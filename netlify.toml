@@ -1,6 +1,9 @@
 [build]
-  command = "node build.mjs"
-  publish = "dist"
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
 [[headers]]
   for = "/*"

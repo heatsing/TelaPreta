@@ -8,12 +8,12 @@
   gap: .6rem; margin: 0; padding: .12rem .12rem .25rem; list-style: none;
 }
 .scene-group li { min-width: 0; }
-.scene-group button {
+.scene-card {
   display: block; width: 100%; padding: 0 0 .2rem; border: 0; border-radius: .3rem;
-  background: transparent; color: var(--link); text-align: center; font-size: .85rem;
+  color: var(--link); text-align: center; font-size: .85rem; text-decoration: none;
 }
-.scene-group button:hover .scene-name { text-decoration: underline; }
-.scene-name { display: block; margin-top: .23rem; line-height: 1.4; }
+.scene-card:hover .scene-name, .scene-card:focus-visible .scene-name { text-decoration: underline; }
+.scene-name { display: block; margin-top: .23rem; line-height: 1.4; overflow-wrap: anywhere; }
 .scene-visual {
   container-type: inline-size; display: grid; position: relative; width: 100%; aspect-ratio: 16 / 9;
   place-items: center; overflow: hidden; isolation: isolate; border: 1px solid #2223;
@@ -75,29 +75,37 @@
 .rain-columns i:nth-child(2n) { margin-top: -20%; color: #a0e7a8; }
 .rain-columns i:nth-child(3n) { margin-top: 15%; color: #417e50; }
 
-#scene-dialog {
-  width: min(47rem, calc(100% - 1.75rem)); max-height: min(90vh, 100% - 1.75rem);
-  padding: .85rem; border: 1px solid var(--border); border-radius: .55rem;
-  background: var(--quiet); color: var(--text);
+.scene-related { margin-block: 1.5rem 3.5rem; }
+.scene-related h2 { margin: 0 0 .5rem; font-size: 1.1rem; line-height: 1.35; }
+.scene-related ul { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; padding: 0; list-style: none; }
+.scene-related li { min-width: 0; max-width: 100%; }
+.scene-related a {
+  display: inline-flex; align-items: center; min-height: 2.75rem; padding: .3rem .7rem;
+  border: 1px solid var(--border); border-radius: .3rem; background: var(--paper);
+  font-size: .9rem; line-height: 1.35; overflow-wrap: anywhere; text-decoration: none;
 }
-#scene-dialog::backdrop { background: #171818a0; }
-.scene-dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .6rem; }
-.scene-dialog-header p { margin: 0 0 .1rem; color: var(--muted); font-size: .84rem; font-weight: 600; }
-.scene-dialog-header h2 { margin: 0; font-size: 1.2rem; line-height: 1.25; }
-.scene-dialog-header form { margin: 0; }
-.scene-close, .scene-dialog-actions button { min-height: 2.4rem; padding: .28rem .66rem; border: 1px solid var(--input-border); border-radius: .3rem; background: var(--paper); color: var(--text); font-size: .9rem; }
-.scene-dialog-actions { margin-top: .65rem; }
-.scene-dialog-visual .scene-visual { max-height: 65vh; }
-.scene-dialog-visual .radar-dial::before { animation: radar-sweep 4.8s linear infinite; }
-.scene-dialog-visual .bounce-x { animation: bounce-horizontal 4.2s linear infinite alternate; }
-.scene-dialog-visual .bounce-mark { animation: bounce-vertical 2.85s linear infinite alternate; }
-.scene-dialog-visual .rain-columns i { animation: rain-fall 5s linear infinite; animation-delay: var(--delay); }
-.scene-dialog-visual.scene-paused *, .scene-dialog-visual.scene-paused *::before { animation-play-state: paused; }
+.scene-related a:hover { border-color: var(--hover-border); color: var(--link-hover); text-decoration: underline; }
+.scene-player-actions { margin-top: .65rem; }
+.scene-player-actions button { min-height: 2.4rem; padding: .28rem .66rem; border: 1px solid var(--input-border); border-radius: .3rem; background: var(--paper); color: var(--text); font-size: .9rem; }
+.scene-player-visual .radar-dial::before { animation: radar-sweep 4.8s linear infinite; }
+.scene-player-visual .bounce-x { animation: bounce-horizontal 4.2s linear infinite alternate; }
+.scene-player-visual .bounce-mark { animation: bounce-vertical 2.85s linear infinite alternate; }
+.scene-player-visual .rain-columns i { animation: rain-fall 5s linear infinite; animation-delay: var(--delay); }
+.scene-player-visual .radar-dial::before,
+.scene-player-visual :is(.bounce-x, .bounce-mark, .rain-columns i) {
+  animation-play-state: var(--scene-play-state, running);
+}
+.scene-player-visual[data-paused] { --scene-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .scene-player-visual:not([data-motion-override]) { --scene-play-state: paused; }
+}
 @keyframes radar-sweep { to { transform: rotate(360deg); } }
 @keyframes bounce-horizontal { from { left: 2%; } to { left: 70%; } }
 @keyframes bounce-vertical { from { transform: translateY(-146%); } to { transform: translateY(155%); } }
 @keyframes rain-fall { from { transform: translateY(-115%); } to { transform: translateY(95%); } }
 @media (max-width: 41rem) {
-  .scene-group ul { grid-template-columns: repeat(5, minmax(7.25rem, 1fr)); overflow-x: auto; scroll-snap-type: x proximity; }
-  .scene-group li { scroll-snap-align: start; }
+  .scene-group ul { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 22rem) {
+  .scene-group ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

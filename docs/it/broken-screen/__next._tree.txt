@@ -1,0 +1,5 @@
+:HL["/TelaPreta/_next/static/chunks/1txuahf709c_u.css","style"]
+:HL["/TelaPreta/_next/static/chunks/206ud3u2j6bk2.css","style"]
+2:[["children",{"s":"__PAGE__","h":160}]]
+1:[["children",{"s":{"n":"segments","t":"oc","k":"it/broken-screen","s":[]},"h":65648,"c":"$Q2"}]]
+0:{"b":"FRdcZhDh2xD7m9fbP6e0B","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}

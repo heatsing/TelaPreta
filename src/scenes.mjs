@@ -148,79 +148,15 @@ export function navigationLabels(lang) {
   return categoryLabels[lang];
 }
 
-const updateSet = new Set(updateIds);
-const crackLines = [-169, -149, -121, -105, -77, -52, -39, -12, 3, 22, 48, 62, 89, 111, 142, 155, 176]
-  .map((angle, i) => `<i style="--angle:${angle}deg;--length:${14 + (i * 11 % 43)}%;--fade:${(4 + i % 5) / 10}"></i>`)
-  .join('');
-const rainColumns = ['A7 :: M2 9Z', '0Y 5A :: E1', 'Q8 2X 4U ::', 'T9 :: K6 L3', '1S V0 :: H5', 'U3 Z8 M2 4W', 'P0 :: C3 2X', 'Y7 A1 9F ::', 'R6 :: N2 J5', 'H4 G1 :: S7', '2Q M9 D3 ::', 'B8 :: F5 X0'];
-
-function visual(id, copy, escape) {
-  let content;
-  if (updateSet.has(id)) {
-    content = `<span class="update-content"><span class="update-label">${escape(copy.updating)}</span><span class="update-track"><i></i></span><span data-scene-percent>24%</span></span>`;
-  } else {
-    switch (id) {
-      case 'error':
-        content = `<span class="error-details"><b>!</b><span>${escape(copy.error)}</span><i></i><i></i></span>`;
-        break;
-      case 'cracked':
-        content = `<span class="crack-lines">${crackLines}</span>`;
-        break;
-      case 'radar':
-        content = '<span class="radar-dial"><i></i><i></i><i></i></span>';
-        break;
-      case 'terminal':
-        content = '<span class="terminal-window"><span>01 · TELA DEMO<br>07 · █ █ ░ ░<br>23 · 0A9F ░<br>48 · ░ ░ ░ █</span><span>◇ ░ ░ ░ ░<br>◇ █ █ ░ ░<br>◇ ░ █ █ ░</span></span>';
-        break;
-      case 'call':
-        content = '<span class="call-grid"><i>R</i><i>M</i><i>A</i><i>S</i><i>J</i><i>D</i></span>';
-        break;
-      case 'bounce':
-        content = '<span class="bounce-x"><span class="bounce-mark">TELA</span></span>';
-        break;
-      case 'clock':
-        content = '<span class="flip-clock" data-scene-clock><i>15</i><i>31</i><i>38</i></span>';
-        break;
-      case 'quotes':
-        content = `<q data-scene-quote>${escape(copy.quotes[0])}</q>`;
-        break;
-      case 'bars':
-        content = `<span class="signal-word">${escape(copy.bars)}</span>`;
-        break;
-      case 'rain':
-        content = `<span class="rain-columns">${rainColumns.map((column, i) => `<i style="--delay:${(i * -1.37) % 5}s">${column}</i>`).join('')}</span>`;
-        break;
-    }
-  }
-  return `<span class="scene-visual scene-${id}" aria-hidden="true">${content}</span>`;
-}
-
-export function renderSceneGallery(lang, escape) {
+export function sceneGalleryData(lang) {
   const copy = sceneCopy[lang];
   const groups = [
     [prankIds, copy.pranks],
     [updateIds, platforms],
     [saverIds, copy.savers]
-  ];
-  const sections = groups.map(([ids, labels], index) => `
-  <section class="scene-group" aria-labelledby="scene-group-${index}">
-    <h2 id="scene-group-${index}">${escape(copy.groups[index])}</h2>
-    <ul role="list">
-      ${ids.map((id, i) => `<li><button type="button" data-scene="${id}" aria-haspopup="dialog">
-        ${visual(id, copy, escape)}<span class="scene-name">${escape(labels[i])}</span>
-      </button></li>`).join('')}
-    </ul>
-  </section>`).join('');
-  return `<div class="scene-gallery">${sections}
-  <dialog id="scene-dialog" aria-labelledby="scene-title" data-quotes="${escape(JSON.stringify(copy.quotes))}">
-    <div class="scene-dialog-header"><div><p>${escape(copy.demo)}</p><h2 id="scene-title"></h2></div>
-      <form method="dialog"><button class="scene-close" type="submit" autofocus>${escape(copy.close)}</button></form>
-    </div>
-    <div class="scene-dialog-visual"></div>
-    <div class="scene-dialog-actions" hidden>
-      <button type="button" data-pause="${escape(copy.pause)}" data-resume="${escape(copy.resume)}" hidden>${escape(copy.pause)}</button>
-      <button type="button" data-next-quote hidden>${escape(copy.next)}</button>
-    </div>
-  </dialog>
-</div>`;
+  ].map(([ids, names], index) => ({
+    heading: copy.groups[index],
+    scenes: ids.map((id, sceneIndex) => ({ id, name: names[sceneIndex] }))
+  }));
+  return { copy, groups };
 }

@@ -11,8 +11,32 @@ export const screenColors = [
 
 const colorsById = new Map(screenColors.map((color) => [color.id, color]));
 
+const sceneSlugs = {
+  error: 'retro-blue-screen',
+  cracked: 'broken-screen',
+  radar: 'radar-screen',
+  terminal: 'terminal-screen',
+  call: 'video-call-screen',
+  'update-blue': 'windows-10-update-screen',
+  'update-retro': 'windows-xp-update-screen',
+  'update-silver': 'mac-os-x-update-screen',
+  'update-violet': 'ubuntu-22-04-update-screen',
+  'update-gray': 'chromeos-update-screen',
+  bounce: 'bouncing-logo-screen',
+  clock: 'flip-clock-screen',
+  quotes: 'quote-screen',
+  bars: 'no-signal-screen',
+  rain: 'digital-rain-screen'
+};
+
 export function pathFor(locale, colorId) {
   return `${locale.base}${colorsById.get(colorId).slug}/`;
+}
+
+export function scenePathFor(locale, sceneId) {
+  const slug = sceneSlugs[sceneId];
+  if (!slug) throw new Error(`Unknown scene: ${sceneId}`);
+  return `${locale.base}${slug}/`;
 }
 
 export function relativeHref(fromPath, targetPath) {
