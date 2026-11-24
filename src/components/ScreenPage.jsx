@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { colorPageLabel } from '../color-page-copy.mjs';
 import { pathFor, relativeHref } from '../routes.mjs';
 import { copyForPage } from '../site.mjs';
@@ -6,7 +5,7 @@ import { DisplayPageFrame, paletteLinks } from './DisplayPageFrame';
 import { ScreenSettings } from './ScreenSettings';
 import { ScreenTool } from './ScreenTool';
 import { ShareSection } from './ShareSection';
-import { ToolFaq } from './ToolFaq';
+import { ToolGuide, UsageExamples } from './ToolGuide';
 
 const resolutions = [[1280, 720], [1920, 1080], [2560, 1440], [3840, 2160], [1080, 1920], [1080, 1080]];
 
@@ -16,28 +15,14 @@ function Editorial({ locale, copy, mode, url, linkTo }) {
 
   return (
     <div className="editorial">
-      <section id="como-usar" aria-labelledby="guide-title">
-        <h2 id="guide-title">{locale.nav[2]}</h2>
-        <h3>{copy.guide}</h3>
-        <ol>{copy.steps.map((step) => <li key={step}>{step}</li>)}</ol>
+      <ToolGuide title={locale.nav[2]} stepHeading={copy.guide} steps={copy.steps} about={copy.definition} faqTitle={ui.faq} faq={copy.faq}>
         <p className="test-coverage">{ui.coverage}</p>
         <h3>{ui.compare}</h3>
         <ul className="checks">
           {locale.compare.map(([color, description]) => <li key={color}><strong>{color}</strong><span>{description}</span></li>)}
         </ul>
-        <h3 id="about">{copy.definition[0]}</h3>
-        <p>{copy.definition[1]}</p>
-        <ToolFaq title={ui.faq} items={copy.faq} />
-      </section>
-      <section id="uses" aria-labelledby="uses-title">
-        <h2 id="uses-title">{copy.usesTitle}</h2>
-        {copy.uses.map(([name, description, source]) => (
-          <Fragment key={name}>
-            <h3>{name}</h3>
-            <p>{description}{source && <> <a href={linkTo(source.href)}>{source.label}</a></>}</p>
-          </Fragment>
-        ))}
-      </section>
+      </ToolGuide>
+      <UsageExamples title={copy.usesTitle} examples={copy.uses} linkTo={linkTo} />
       <section id="png" aria-labelledby="png-title">
         <h2 id="png-title">{copy.png[0]}</h2>
         <p>{copy.png[1]}</p>

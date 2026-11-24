@@ -3,4 +3,4 @@
 :HL["/TelaPreta/_next/static/chunks/1--kxzufaoqoe.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":{"n":"segments","t":"oc","k":"pl/quote-screen","s":[]},"h":65648,"c":"$Q2"}]]
-0:{"b":"lJyRL3ttmR-Pb_6hmZLRQ","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}
+0:{"b":"m_b8f5tnDX9y4vrGYk86o","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}

@@ -1,6 +1,12 @@
 import asia from './scene-copy-asia.mjs';
 import europe from './scene-copy-eu.mjs';
 import other from './scene-copy-other.mjs';
+import asiaEditorial from './scene-editorial-asia.mjs';
+import coreEditorial from './scene-editorial-core.mjs';
+import europeEditorial from './scene-editorial-eu.mjs';
+import otherEditorial from './scene-editorial-other.mjs';
+
+const editorials = { ...coreEditorial, ...asiaEditorial, ...europeEditorial, ...otherEditorial };
 
 export const sceneText = {
   ...asia,
@@ -306,6 +312,19 @@ export const sceneText = {
 
 export function sceneGuidance(lang, scene) {
   const { start, exit, uses, scenes } = sceneText[lang];
+  const { relatedHeading, fullscreenFaq, scenes: details } = editorials[lang];
   const [title, description, step, use, question, answer] = scenes[scene.id];
-  return { ...scene, title, description, guide: { steps: [step, start, exit], uses, use, faq: [[question, answer]] } };
+  const { about, aboutTitle, fullscreenStep, useTitle, usesTitle, extraUses, extraFaq } = details[scene.id];
+  return {
+    ...scene, title, description,
+    guide: {
+      steps: [step, start, fullscreenStep, exit],
+      about,
+      aboutTitle,
+      usesTitle: usesTitle ?? uses,
+      examples: [[useTitle, use], ...extraUses],
+      faq: [[question, answer], ...extraFaq, fullscreenFaq],
+      relatedHeading
+    }
+  };
 }
