@@ -1,14 +1,21 @@
+import { defaultGuests, defaultSelf } from '../scene-defaults.mjs';
+
 const crackAngles = [-169, -149, -121, -95, -77, -52, -39, -12, 3, 22, 48, 62, 89, 111, 142, 155, 176];
 const rainColumns = ['A7 :: M2 9Z', '0Y 5A :: E1', 'Q8 2X 4U ::', 'T9 :: K6 L3', '1S V0 :: H5', 'U3 Z8 M2 4W', 'P0 :: C3 2X', 'Y7 A1 9F ::', 'R6 :: N2 J5', 'H4 G1 :: S7', '2Q M9 D3 ::', 'B8 :: F5 X0'];
-const callerInitials = ['R', 'M', 'A', 'S', 'J', 'D'];
+const sampleCallers = [...defaultGuests.slice(0, 5), defaultSelf];
 
-function SceneArtwork({ id, copy, active, update, progress, clock, clockLabel, quote }) {
+function initials(name) {
+  return name.trim().split(/\s+/u).slice(0, 2).map((word) => Array.from(word)[0]).join('').toUpperCase() || '·';
+}
+
+function SceneArtwork({ id, name, copy, active, update, progress, clock, clockLabel, quote, callers }) {
   if (update) {
     return (
       <span className="update-content">
-        <span className="update-label">{copy.updating}</span>
+        <span className="update-emblem" aria-hidden="true" />
+        <strong className="update-platform">{name}</strong>
+        <span className="update-label">{copy.updating} <span data-scene-percent="">{progress}%</span></span>
         <span className="update-track"><i /></span>
-        <span data-scene-percent="">{progress}%</span>
       </span>
     );
   }
@@ -33,8 +40,30 @@ function SceneArtwork({ id, copy, active, update, progress, clock, clockLabel, q
           <span>◇ ░ ░ ░ ░<br />◇ █ █ ░ ░<br />◇ ░ █ █ ░</span>
         </span>
       );
-    case 'call':
-      return <span className="call-grid">{callerInitials.map((initial) => <i key={initial}>{initial}</i>)}</span>;
+    case 'call': {
+      const columns = callers.length === 1 ? 1 : callers.length <= 4 ? 2 : 3;
+      return (
+        <span className="call-scene">
+          <span className="call-grid" style={{ '--call-columns': columns }}>
+            {callers.map((caller, index) => (
+              <span className="call-tile" key={index}>
+                <span className="call-avatar">{initials(caller)}</span>
+                <span className="call-name">{caller}</span>
+              </span>
+            ))}
+          </span>
+          <span className="call-status"><i /><i /><i /></span>
+        </span>
+      );
+    }
+    case 'boot-xp':
+      return (
+        <span className="boot-content">
+          <span className="boot-emblem" aria-hidden="true"><i /><i /><i /><i /></span>
+          <strong>Windows XP</strong>
+          <span className="boot-track" data-boot-loader=""><i /><i /><i /></span>
+        </span>
+      );
     case 'bounce':
       return <span className="bounce-x"><span className="bounce-mark">TELA</span></span>;
     case 'clock':
@@ -58,13 +87,13 @@ function SceneArtwork({ id, copy, active, update, progress, clock, clockLabel, q
   }
 }
 
-export function SceneVisual({ id, copy, active = false, progress = 24, clock = ['15', '31', '38'], clockLabel, quote }) {
+export function SceneVisual({ id, name, copy, active = false, progress = 24, clock = ['15', '31', '38'], clockLabel, quote, callers = sampleCallers }) {
   const update = id.startsWith('update-');
   const hasAccessibleContent = active && (update || id === 'clock' || id === 'quotes');
 
   return (
     <span className={`scene-visual scene-${id}`} aria-hidden={hasAccessibleContent ? undefined : true} style={update ? { '--progress': `${progress}%` } : undefined}>
-      <SceneArtwork id={id} copy={copy} active={active} update={update} progress={progress} clock={clock} clockLabel={clockLabel} quote={quote} />
+      <SceneArtwork id={id} name={name} copy={copy} active={active} update={update} progress={progress} clock={clock} clockLabel={clockLabel} quote={quote} callers={callers} />
     </span>
   );
 }

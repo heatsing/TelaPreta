@@ -27,11 +27,13 @@ const sceneSlugs = {
   'update-silver': 'mac-os-x-update-screen',
   'update-violet': 'ubuntu-22-04-update-screen',
   'update-gray': 'chromeos-update-screen',
+  'boot-xp': 'windows-xp-boot-screen',
   bounce: 'bouncing-logo-screen',
   clock: 'flip-clock-screen',
   quotes: 'quote-screen',
   bars: 'no-signal-screen',
-  rain: 'digital-rain-screen'
+  rain: 'digital-rain-screen',
+  'white-noise': 'white-noise-screen'
 };
 
 export function pathFor(locale, colorId) {

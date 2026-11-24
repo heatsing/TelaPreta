@@ -21,7 +21,7 @@ export function SceneGallery({ locale, path, currentSceneId }) {
                     href={relativeHref(path, scenePathFor(locale, id))}
                     aria-current={id === currentSceneId ? 'page' : undefined}
                   >
-                    <SceneVisual id={id} copy={copy} />
+                    <SceneVisual id={id} name={name} copy={copy} />
                     <span className="scene-name">{name}</span>
                   </a>
                 </li>

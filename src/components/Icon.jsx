@@ -1,4 +1,4 @@
-import { Check, ChevronDown, Download, Globe, Maximize, Minimize, Moon, Sun } from 'lucide-react';
+import { Check, ChevronDown, Download, Globe, Maximize, Minimize, Moon, Pause, Play, Sun } from 'lucide-react';
 
 const icons = {
   fullscreen: Maximize,
@@ -8,7 +8,9 @@ const icons = {
   globe: Globe,
   chevron: ChevronDown,
   check: Check,
-  download: Download
+  download: Download,
+  play: Play,
+  pause: Pause
 };
 
 export function Icon({ name }) {

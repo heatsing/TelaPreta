@@ -3,10 +3,10 @@ import { colorPageLabel } from '../color-page-copy.mjs';
 import { pathFor, relativeHref } from '../routes.mjs';
 import { copyForPage } from '../site.mjs';
 import { DisplayPageFrame, paletteLinks } from './DisplayPageFrame';
-import { Icon } from './Icon';
 import { ScreenSettings } from './ScreenSettings';
 import { ScreenTool } from './ScreenTool';
 import { ShareSection } from './ShareSection';
+import { ToolFaq } from './ToolFaq';
 
 const resolutions = [[1280, 720], [1920, 1080], [2560, 1440], [3840, 2160], [1080, 1920], [1080, 1080]];
 
@@ -27,15 +27,7 @@ function Editorial({ locale, copy, mode, url, linkTo }) {
         </ul>
         <h3 id="about">{copy.definition[0]}</h3>
         <p>{copy.definition[1]}</p>
-        <div className="faq">
-          <h3 id="faq">{ui.faq}</h3>
-          {copy.faq.map(([question, answer]) => (
-            <details key={question}>
-              <summary>{question}<Icon name="chevron" /></summary>
-              <p>{answer}</p>
-            </details>
-          ))}
-        </div>
+        <ToolFaq title={ui.faq} items={copy.faq} />
       </section>
       <section id="uses" aria-labelledby="uses-title">
         <h2 id="uses-title">{copy.usesTitle}</h2>

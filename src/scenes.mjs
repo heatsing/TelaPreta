@@ -1,3 +1,5 @@
+import { sceneText } from './scene-guidance.mjs';
+
 const prankIds = ['error', 'cracked', 'radar', 'terminal', 'call'];
 const updateIds = ['update-blue', 'update-retro', 'update-silver', 'update-violet', 'update-gray'];
 const saverIds = ['bounce', 'clock', 'quotes', 'bars', 'rain'];
@@ -152,8 +154,8 @@ export function sceneGalleryData(lang) {
   const copy = sceneCopy[lang];
   const groups = [
     [prankIds, copy.pranks],
-    [updateIds, platforms],
-    [saverIds, copy.savers]
+    [[...updateIds, 'boot-xp'], [...platforms, sceneText[lang].bootLabel]],
+    [[...saverIds, 'white-noise'], [...copy.savers, sceneText[lang].noiseLabel]]
   ].map(([ids, names], index) => ({
     heading: copy.groups[index],
     scenes: ids.map((id, sceneIndex) => ({ id, name: names[sceneIndex] }))
