@@ -2,6 +2,10 @@
 
 A static black and white screen tool with 15 languages, browser-generated PNG downloads, and screen simulations.
 
+## Netlify
+
+Netlify builds with `node build.mjs` and serves `dist/`. Canonical URLs and share links use the site's primary Netlify URL, including its custom domain when configured.
+
 ## GitHub Pages
 
 The published files are in `docs/`. Set the GitHub Pages source to **Deploy from a branch**, then select **main** and **/docs**.
