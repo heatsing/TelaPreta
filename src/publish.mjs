@@ -91,6 +91,8 @@ export async function publishSite({ outputDir, assetsDir, languages, siteRoot, p
 
     const fallback = [];
     for (const redirect of redirects) {
+      // Netlify's redirect rules distinguish case, but its deployed files can collide.
+      if (!pagesBuild && redirect.path.toLowerCase() === redirect.target.toLowerCase()) continue;
       const directory = join(staging, redirect.path.slice(1));
       const targetDirectory = join(staging, redirect.target.slice(1));
       const existing = await existingPath(directory);
